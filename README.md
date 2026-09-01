@@ -219,12 +219,21 @@ playground's curve overlay aligns with the piano roll to sub-pixel tolerance, an
 compiles **every fenced code block in this README and in `docs/SPEC.md`**,
 requiring zero warnings — so the documentation cannot drift from the language.
 
-You can also run the standalone MPE conformance audit on a file you rendered:
+You can also run the standalone MPE conformance audit. With no argument it
+renders and audits its own fixture, which exercises the full checklist:
+
+```bash
+python tools/audit_mpe.py
+# ...
+# 26 checks, 0 failures
+```
+
+Point it at a file you rendered and it audits that instead. The number of checks
+varies with what the file actually contains — `nocturne.mid` reports
+`25 checks, 0 failures` — but any failure is a real conformance defect:
 
 ```bash
 python tools/audit_mpe.py nocturne.mid
-# ...
-# 26 checks, 0 failures
 ```
 
 ---
