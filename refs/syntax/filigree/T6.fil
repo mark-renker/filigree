@@ -1,0 +1,5 @@
+gesture vibr(rate: 5.2hz, depth: 0.3st, onset: 30%) =
+  bend(wiggle(rate, depth) @ onset..100%)
+stave t6 {
+  notes | 0!vibr 1!vibr 2!vibr 3!vibr 4!vibr 5!vibr | 6!vibr(depth: 0.7st) 7!vibr 8!vibr 9!vibr 10!vibr 11!vibr |
+}

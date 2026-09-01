@@ -1,0 +1,16 @@
+# examples/front_page.fil -- the example on the front page of README.md.
+# A test asserts these stay identical, so the README can never drift from what
+# the compiler actually accepts.
+@title "front page"
+@tempo 84bpm
+@key C minor
+@seed 7
+voicing warm = { range: C3..C5, mode: smooth, size: 4, drop: 2, top: melody }
+gesture sigh = bend(0 -> -0.45st -> 0, shape: ease)
+
+stave lead {
+  harm!voicing=warm | i9       | VI^7     | iv11     | V7alt     |
+  notes             | 0 . 2 3  | 4 - - 2  | ~5 4 . 2 | 1 - - -   |
+  bend!range=3st    | ___/^^^^ | ^^\_____ | ........ | __/\___>3 |
+  press             | /^^^\___ | -----^^^ | __/^^^^^ | ^^^^\___  |
+}

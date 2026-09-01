@@ -1,0 +1,207 @@
+{
+ "reference": "refs/midi/stats.json",
+ "targets": {
+  "timing_dev_ms": [
+   11.708333336906714,
+   78.47395833479118
+  ],
+  "velocity_sd": [
+   9.540259674197605,
+   16.300398874705984
+  ],
+  "gate_ratio": [
+   0.25677521784088886,
+   0.952323991797576
+  ],
+  "chord_spread_ms": [
+   8.333333333325754,
+   31.25
+  ]
+ },
+ "synthetic_input": {
+  "tempo": 96.0,
+  "bars": 24,
+  "base_gate": 0.62,
+  "notes": 528
+ },
+ "presets": {
+  "loose": {
+   "timing_dev_ms": {
+    "median": 15.822,
+    "q1": 6.54,
+    "q3": 26.707,
+    "target_iqr": [
+     11.708,
+     78.474
+    ],
+    "inside": true
+   },
+   "velocity_sd": {
+    "median": 12.693,
+    "q1": 12.693,
+    "q3": 12.693,
+    "target_iqr": [
+     9.54,
+     16.3
+    ],
+    "inside": true
+   },
+   "gate_ratio": {
+    "median": 0.614,
+    "q1": 0.399,
+    "q3": 0.79,
+    "target_iqr": [
+     0.257,
+     0.952
+    ],
+    "inside": true
+   },
+   "chord_spread_ms": {
+    "median": 18.254,
+    "q1": 7.435,
+    "q3": 28.97,
+    "target_iqr": [
+     8.333,
+     31.25
+    ],
+    "inside": true
+   },
+   "inside_count": 4
+  },
+  "tight": {
+   "timing_dev_ms": {
+    "median": 14.198,
+    "q1": 6.917,
+    "q3": 22.41,
+    "target_iqr": [
+     11.708,
+     78.474
+    ],
+    "inside": true
+   },
+   "velocity_sd": {
+    "median": 10.18,
+    "q1": 10.18,
+    "q3": 10.18,
+    "target_iqr": [
+     9.54,
+     16.3
+    ],
+    "inside": true
+   },
+   "gate_ratio": {
+    "median": 0.602,
+    "q1": 0.348,
+    "q3": 0.71,
+    "target_iqr": [
+     0.257,
+     0.952
+    ],
+    "inside": true
+   },
+   "chord_spread_ms": {
+    "median": 20.82,
+    "q1": 7.893,
+    "q3": 32.782,
+    "target_iqr": [
+     8.333,
+     31.25
+    ],
+    "inside": true
+   },
+   "inside_count": 4
+  },
+  "pushed": {
+   "timing_dev_ms": {
+    "median": 14.816,
+    "q1": 10.302,
+    "q3": 18.898,
+    "target_iqr": [
+     11.708,
+     78.474
+    ],
+    "inside": true
+   },
+   "velocity_sd": {
+    "median": 11.328,
+    "q1": 11.328,
+    "q3": 11.328,
+    "target_iqr": [
+     9.54,
+     16.3
+    ],
+    "inside": true
+   },
+   "gate_ratio": {
+    "median": 0.621,
+    "q1": 0.352,
+    "q3": 0.69,
+    "target_iqr": [
+     0.257,
+     0.952
+    ],
+    "inside": true
+   },
+   "chord_spread_ms": {
+    "median": 10.233,
+    "q1": 7.314,
+    "q3": 11.941,
+    "target_iqr": [
+     8.333,
+     31.25
+    ],
+    "inside": true
+   },
+   "inside_count": 4
+  },
+  "breath": {
+   "timing_dev_ms": {
+    "median": 14.384,
+    "q1": 6.505,
+    "q3": 22.611,
+    "target_iqr": [
+     11.708,
+     78.474
+    ],
+    "inside": true
+   },
+   "velocity_sd": {
+    "median": 12.684,
+    "q1": 12.684,
+    "q3": 12.684,
+    "target_iqr": [
+     9.54,
+     16.3
+    ],
+    "inside": true
+   },
+   "gate_ratio": {
+    "median": 0.656,
+    "q1": 0.386,
+    "q3": 0.796,
+    "target_iqr": [
+     0.257,
+     0.952
+    ],
+    "inside": true
+   },
+   "chord_spread_ms": {
+    "median": 20.191,
+    "q1": 11.8,
+    "q3": 33.719,
+    "target_iqr": [
+     8.333,
+     31.25
+    ],
+    "inside": true
+   },
+   "inside_count": 4
+  }
+ },
+ "unhumanised_input": {
+  "timing_dev_ms": 0.0,
+  "velocity_sd": 3.566,
+  "gate_ratio": 0.62,
+  "chord_spread_ms": 0.0
+ }
+}

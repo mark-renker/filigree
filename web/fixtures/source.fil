@@ -1,0 +1,72 @@
+# Cinder Study - 8 bars, C minor, MPE.  The example that ships with the
+# playground.  Every curve glyph sits in the column of the note it shapes:
+# read DOWN a column to read one moment of the performance.
+
+@title  "Filigree - Cinder Study (8 bars)"
+@tempo  84bpm
+@meter  4/4
+@key    C minor
+@bend-range 48st
+@grid   10ms
+@seed   7
+
+voicing warm  { range: C3..C5, mode: smooth, size: 4, drop: 2, top: melody }
+voicing deep  { range: C2..C4, mode: close, size: 3 }
+feel    loose { timing: 11ms gauss, velocity: 7%, gate: 4%, seed: 7 }
+@voicing warm
+@feel    loose
+
+gesture scoop  = bend(-1st -> 0 @ 18%) | press(0.18 -> 0.86 @ 22% -> 0.1)
+gesture cry    = bend(0 -> -0.72st @ 32% -> 0.06st @ 62% -> 0)
+gesture vibr(rate: 5.2hz, depth: 0.34st, onset: 30%) =
+                 bend(wiggle(rate, depth) @ onset..100%)
+gesture wide   = vibr(rate: 6.1hz, depth: 0.52st, onset: 22%)
+gesture swell  = press(0.06 -> 0.94 @ 70%, shape: exp) | timbre(0.28 -> 0.86)
+gesture fall   = bend(0 -> >3)          # land on the next chord's third
+gesture sigh   = cry * 0.6 >> bend(0 -> -0.85st)
+
+stave lead {
+  channelgroup 1
+  harm           | i9              | VI^7            | iv11            | V7alt           |
+  notes          | 0 - - 1 2 - - - | 4 - 3 - 2 - - - | 3 - - 4 5 - 4 - | 3 - - - - 1 - - |
+  bend!range=6st | _ / - - - ~ ~ ~ | - - \ _ / ^ ^ - | _ / - ~ \ - x > | ~ ~ ~ ~ ~ ~ ~ > |
+  press          | / ^ ^ ^ \ _ _ - | ^ ^ \ _ / ^ ^ - | / ^ ^ \ / ^ ^ _ | _ / ^ ^ ^ ^ \ _ |
+  timbre         | - - - ^ ^ ^ - - | ^ ^ \ _ _ - - _ | - ^ ^ ^ \ - - ^ | - - ^ ^ ^ ^ - - |
+
+  harm           | i9              | bVII^7          | ii0             | V7alt           |
+  notes          | 0 - - - 1 - 2 - | 3 - - - 4 - - - | 5 - - 4 3 - - - | 2 - - - - - 0 - |
+  bend!range=6st | ~ ~ ~ ~ ~ ~ ~ ~ | ~ ~ ~ ~ - - - ~ | ~ ~ - \ _ _ - > | - - / ^ ^ ^ ^ > |
+  press          | / ^ ^ ^ ^ \ _ _ | ^ ^ ^ \ _ / ^ - | ^ \ _ / ^ ^ \ _ | _ / ^ ^ ^ ^ \ _ |
+  timbre         | - - ^ ^ - - \ _ | - ^ ^ - - ^ ^ - | _ / ^ - - \ _ - | - - ^ ^ ^ ^ ^ ^ |
+}
+
+stave keys {
+  channelgroup 1
+  harm           | i9    | VI^7  | iv11  | V7alt |
+  voices         | { mid1: ~1 - - - - ~1 - - ;
+                     mid2: ~3 - - - - ~3 - - ;
+                     mid3: ~5 - - - - ~5 - - ;
+                     top : ~7 - - - - ~7 - - }
+  press          | _ / ^ ^ ^ \ _ - |     # every voice swells together ...
+  press@top      | _ / ^ ^ ^ ^ \ - |     # ... but the top voice leads by a hair
+  timbre         | - / ^ ^ - \ - - |
+  bend           | _ _ / - \ _ _ - |     # the whole chord breathes together
+  bend@mid1      | drift(0.14st)   |     # ... and one inner voice drifts alone
+
+  harm           | i9    | bVII^7| ii0   | V7alt |
+}
+
+stave bass {
+  channelgroup 2
+  harm!voicing=deep| i9              | VI^7            | iv11            | V7alt           |
+  notes            | @root - . @root | @root - @guide -| @root - . @root | @root - @guide -|
+  bend!range=4st   | v _ x _         | _ _ / \         | v _ x _         | _ _ / \         |
+  press            | ^ \ _ ^         | ^ ^ \ _         | ^ \ _ ^         | ^ ^ \ _         |
+  timbre           | _ / ^ -         | ^ - \ _         | _ / ^ -         | ^ - \ _         |
+
+  harm!voicing=deep| i9              | bVII^7          | ii0             | V7alt           |
+  notes            | @root - . @root | @root - @guide -| @root - . @root | @root - @guide -|
+  bend!range=4st   | v _ x _         | _ _ / \         | v _ x _         | _ _ / >         |
+  press            | ^ \ _ ^         | ^ ^ \ _         | ^ \ _ ^         | ^ ^ \ _         |
+  timbre           | _ / ^ -         | ^ - \ _         | _ / ^ -         | ^ - \ _         |
+}

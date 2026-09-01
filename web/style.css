@@ -1,0 +1,328 @@
+/* Filigree playground — dark, precise, low-chrome, information-dense.
+   No webfonts, no external assets: everything here is local by design.
+
+   Round 2 notes:
+   • Editor base type is 15px/22px (was 12px/18px).
+   • The syntax palette is SIX roles, not 22 colours:
+       --tk-struct  bars, brackets, operators — the scaffolding
+       --tk-glyph   curve motion glyphs ^ _ / \ - ~ > and levels
+       --tk-pitch   pitches, degrees, chords
+       --tk-name    lane names, block keywords, directives, voices
+       --tk-lit     numbers, strings
+       --tk-dim     comments, rests, ties
+     Every one of them clears 4.5:1 on the editor background (#0f1216); the
+     `|` bar separators are 6.20:1 (they were 1.84:1) yet stay subordinate to
+     the 12–14:1 glyph/pitch roles.
+   • No token rule sets font-weight or letter-spacing: the overlay must never
+     change advance width (see editor.js).                                    */
+
+:root{
+  --bg:#0b0d10;
+  --bg1:#0f1216;
+  --bg2:#12161b;
+  --bg3:#171c22;
+  --line:#1e242c;
+  --line2:#2a323c;
+  --fg:#dde3ea;
+  --fg2:#a8b3c1;
+  --fg3:#8b97a6;          /* 6.33:1 on --bg1 (was #5f6c7b, 3.50:1) */
+  --accent:#6ee7d0;
+  --accent2:#f2a3c7;
+  --warn:#f0b45e;
+  --err:#ff9a9a;
+  --focus:#7fe6d0;
+  --lead:#7fb8ff;
+  --keys:#c4a2ff;
+  --bass:#6ee7a8;
+
+  /* the six syntax roles */
+  --tk-struct:#8b95a4;    /* 6.20:1  — load-bearing but subordinate */
+  --tk-glyph:#cfe0f5;     /* 13.98:1 — the loudest thing in a lane  */
+  --tk-pitch:#a9e5c4;     /* 13.14:1 */
+  --tk-name:#c9b4f7;      /* 10.15:1 */
+  --tk-lit:#f0c898;       /* 12.00:1 */
+  --tk-dim:#7e8896;       /* 5.23:1  */
+
+  --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,"DejaVu Sans Mono",monospace;
+  --ui:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --fs:15px;
+  --lh:22px;
+  --pad:12px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font:12.5px/1.45 var(--ui);
+  display:flex;flex-direction:column;overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+button,input{font-family:inherit}
+
+/* ── focus: visible everywhere, always (WCAG 2.4.7) ──────────────────────── */
+:focus{outline:2px solid var(--focus);outline-offset:2px}
+:focus:not(:focus-visible){outline:none}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+#ta:focus,#ta:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+input[type=range]:focus,input[type=range]:focus-visible{
+  outline:2px solid var(--focus);outline-offset:3px;
+}
+#rollScroll:focus,#rollScroll:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+#diag .row:focus,#diag .row:focus-visible{
+  outline:2px solid var(--focus);outline-offset:-2px;background:#141a21;
+}
+
+/* ───────────────────────────────── top bar ───────────────────────────────── */
+#bar{
+  flex:0 0 auto;min-height:38px;display:flex;align-items:center;gap:12px;
+  padding:3px 10px;row-gap:4px;flex-wrap:wrap;
+  background:linear-gradient(180deg,#13171d,#0e1116);
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:6px;color:var(--accent);flex:0 0 auto}
+.brand .mark{width:18px;height:18px;opacity:.95}
+.brand b{color:var(--fg);font-size:13px;letter-spacing:.02em}
+.brand .sub{color:var(--fg3);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase}
+.transport{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:0}
+.right{margin-left:auto;display:flex;align-items:center;gap:10px;flex:0 0 auto}
+
+.btn{
+  background:#1a1f26;color:var(--fg);border:1px solid var(--line2);border-radius:5px;
+  padding:4px 9px;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;
+  line-height:1.3;
+}
+.btn:hover{background:#262e39;color:#fff}
+.btn.primary{background:#12312c;border-color:#3f8677;color:#a8f7e5}
+.btn.primary:hover{background:#164039}
+.btn.primary.on{background:#1c5347;border-color:#4fd1b3;color:#ccfff2}
+.btn .gl{font-size:10px}
+kbd{
+  font:10.5px var(--mono);color:var(--fg3);background:#0d1014;border:1px solid var(--line);
+  border-radius:3px;padding:0 3px;
+}
+.tsep{width:1px;height:18px;background:var(--line2)}
+.meterbox{display:flex;flex-direction:column;line-height:1.05;min-width:34px}
+.meterbox b{font:12px/1.2 var(--mono);color:var(--fg);letter-spacing:.01em}
+.meterbox i{font-size:9px;font-style:normal;color:var(--fg3);letter-spacing:.08em;text-transform:uppercase}
+.vol{display:flex;align-items:center;gap:5px}
+.vol i{font-style:normal;font-size:9.5px;color:var(--fg3);letter-spacing:.08em;text-transform:uppercase}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;height:3px;width:76px;
+  background:var(--line2);border-radius:2px;
+}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;background:var(--accent);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:11px;height:11px;border:0;border-radius:50%;background:var(--accent);cursor:pointer}
+.pill{
+  font:10.5px var(--mono);padding:2px 7px;border-radius:9px;border:1px solid var(--line2);
+  color:var(--fg2);letter-spacing:.04em;
+}
+.pill.online{color:#8ff3dc;border-color:#2b6b5d;background:#0f2a26}
+.pill.offline{color:var(--warn);border-color:#4a3a1e;background:#1e1810}
+.pill.bad{color:#ffb3b3;border-color:#6a2a2a;background:#2a1414}
+
+/* ── the first-five-seconds strip: always on screen, at every width ─────── */
+#howto{
+  flex:0 0 auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  padding:4px 10px;background:#111820;border-bottom:1px solid var(--line);
+  font-size:12px;color:var(--fg2);
+}
+#howto .lead{color:var(--fg3);letter-spacing:.1em;text-transform:uppercase;font-size:9.5px}
+#howto .step{
+  display:inline-flex;align-items:center;gap:5px;background:#182029;color:var(--fg);
+  border:1px solid var(--line2);border-radius:11px;padding:2px 9px 2px 5px;
+  font:12px var(--ui);cursor:pointer;
+}
+#howto .step:hover{background:#212b36;border-color:#3d4a58}
+#howto .step b{
+  display:inline-grid;place-items:center;width:15px;height:15px;border-radius:50%;
+  background:var(--accent);color:#06110e;font:700 10px var(--ui);
+}
+#howto .step kbd{font-size:10px}
+#howto .tail{color:var(--fg3);font-size:11.5px}
+
+/* ─────────────────────────────── app shell ──────────────────────────────── */
+#app{flex:1 1 auto;display:flex;min-height:0;min-width:0}
+#left{width:48%;min-width:260px;display:flex;flex-direction:column;min-height:0;background:var(--bg1)}
+#split{flex:0 0 4px;cursor:col-resize;background:var(--bg);border-left:1px solid var(--line);border-right:1px solid var(--line)}
+#split:hover{background:#1d2530}
+#right{flex:1;display:flex;flex-direction:column;min-width:0;min-height:0;background:var(--bg1)}
+
+.paneHead{
+  min-height:24px;flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:2px 9px;
+  background:#0d1014;border-bottom:1px solid var(--line);flex-wrap:wrap;row-gap:2px;
+}
+.paneHead.sub2{border-top:1px solid var(--line)}
+.ph-title{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg2);flex:0 0 auto}
+.ph-file{font:11px var(--mono);color:var(--fg3);flex:0 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ph-hint{font-size:11px;color:var(--fg3);flex:0 1 auto}
+.ph-hint b{color:var(--fg2)}
+.flex{flex:1 1 auto;min-width:0}
+.chip{font:10.5px var(--mono);background:#1a1f26;border:1px solid var(--line2);border-radius:8px;padding:0 6px;color:var(--fg2);flex:0 0 auto}
+.chip.bad{background:#2a1414;border-color:#5a2222;color:#ffb3b3}
+.dirty{color:var(--warn);font-size:10px;flex:0 0 auto}
+.zoom{display:flex;align-items:center;gap:5px;flex:0 0 auto}
+.zoom i,.tog i{font-style:normal;font-size:9.5px;color:var(--fg3);letter-spacing:.08em;text-transform:uppercase}
+.zoom input[type=range]{width:60px}
+.tog{display:flex;align-items:center;gap:4px;cursor:pointer;flex:0 0 auto}
+.tog input{accent-color:var(--accent);width:12px;height:12px;margin:0}
+
+/* ───────────────────────────────── editor ───────────────────────────────── */
+#edWrap{flex:1 1 auto;min-height:0;display:flex;position:relative;background:var(--bg1);overflow:hidden}
+#gutter{
+  flex:0 0 42px;overflow:hidden;padding:7px 7px 7px 0;text-align:right;
+  font:var(--fs)/var(--lh) var(--mono);color:#7d8896;background:#0c0f13;
+  border-right:1px solid var(--line);user-select:none;
+}
+#gutter .gl-cur{color:#0a1512;background:var(--accent)}
+#gutter .gl-bad{color:#ffb3b3;background:#2a1414}
+#edScroll{position:relative;flex:1;min-width:0;overflow:hidden}
+#hl,#ta{
+  position:absolute;inset:0;margin:0;border:0;padding:7px 14px 26px 8px;
+  font:var(--fs)/var(--lh) var(--mono);
+  white-space:pre;word-wrap:normal;overflow-wrap:normal;tab-size:2;-moz-tab-size:2;
+  letter-spacing:0;font-variant-ligatures:none;font-kerning:none;font-feature-settings:"liga" 0,"calt" 0;
+  text-rendering:geometricPrecision;
+}
+#hl{overflow:hidden;pointer-events:none;z-index:1;color:var(--fg);background:transparent}
+#ta{
+  overflow:auto;z-index:2;resize:none;background:transparent;
+  color:transparent;caret-color:var(--accent);
+}
+#ta::selection{background:#2b4c5a;color:transparent}
+#ta::-webkit-scrollbar,#diag::-webkit-scrollbar,#rollScroll::-webkit-scrollbar,.staves::-webkit-scrollbar{width:12px;height:12px}
+#ta::-webkit-scrollbar-thumb,#diag::-webkit-scrollbar-thumb,#rollScroll::-webkit-scrollbar-thumb,.staves::-webkit-scrollbar-thumb{background:#4a5665;border-radius:6px;border:2px solid #0b0d10}
+#ta::-webkit-scrollbar-track,#rollScroll::-webkit-scrollbar-track,.staves::-webkit-scrollbar-track{background:#0b0d10}
+
+/* overlay structure — see editor.js. `.lb` is the transparent base line that
+   sets exact metrics; `.tk` are absolutely positioned colour tokens. */
+#hl .ln{display:block;position:relative;height:var(--lh);line-height:var(--lh);white-space:pre}
+#hl .lb{color:transparent}
+#hl .tk{position:absolute;top:0;white-space:pre}
+
+/* the escape hatch cue, shown after Escape */
+#edWrap::after{
+  content:"⇥ Tab now leaves the editor";
+  position:absolute;right:14px;bottom:4px;z-index:3;pointer-events:none;
+  font:10.5px var(--ui);color:#06110e;background:var(--accent);
+  border-radius:9px;padding:1px 7px;opacity:0;transition:opacity .12s;
+}
+#edWrap.escaped::after{opacity:1}
+
+/* syntax colours — six roles */
+.t-bar,.t-op,.t-grp,.t-mid{color:var(--tk-struct)}
+.t-up,.t-dn,.t-wig,.t-tgt,.t-lvl,.t-plain{color:var(--tk-glyph)}
+.t-abs,.t-deg,.t-chord,.t-vel{color:var(--tk-pitch)}
+.t-kw,.t-dir,.t-name,.t-voice,.t-gest,
+.t-lane-notes,.t-lane-harm,.t-lane-bend,.t-lane-press,.t-lane-timbre,.t-lane-other{color:var(--tk-name)}
+.t-num,.t-str{color:var(--tk-lit)}
+.t-com,.t-rest,.t-tie{color:var(--tk-dim)}
+.t-com{font-style:italic}
+
+/* ───────────────────────────── diagnostics ─────────────────────────────── */
+#diag{flex:0 0 106px;overflow:auto;background:#0c0f13;font:12px/1.5 var(--mono)}
+#diag .row{
+  display:flex;gap:8px;padding:3px 9px;border-bottom:1px solid #11151a;cursor:pointer;
+  align-items:baseline;width:100%;text-align:left;background:none;border-left:0;
+  border-right:0;border-top:0;color:inherit;font:inherit;
+}
+#diag .row:hover{background:#141a21}
+#diag .row.static{cursor:default}
+#diag .sev{flex:0 0 auto;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+#diag .row.w .sev{color:var(--warn)}
+#diag .row.e .sev{color:var(--err)}
+#diag .row.n .sev{color:var(--fg3)}
+#diag .loc{flex:0 0 auto;color:#8d99a7}
+#diag .msg{color:#c2ccd8;flex:1;white-space:pre-wrap}
+#diag .empty{padding:8px 9px;color:var(--fg2);font-family:var(--ui);font-size:12px}
+#diag .empty b{color:var(--fg)}
+
+/* ─────────────────────────────── piano roll ────────────────────────────── */
+#rollHost{flex:1 1 auto;min-height:0;display:flex;background:#0a0c0f}
+#rollKeys{flex:0 0 46px;overflow:hidden;border-right:1px solid var(--line);background:#0c0f13}
+#rollKeys canvas{display:block}
+#rollScroll{flex:1;overflow:auto;position:relative;min-width:0}
+#rollInner{position:relative}
+#rollInner canvas{display:block;position:absolute;left:0}
+#cRibbon{top:0;z-index:3}
+#cRuler{z-index:3}
+#cRoll{z-index:1}
+#cOver{z-index:2;pointer-events:none}
+#rollEmpty{
+  position:absolute;inset:0;display:none;place-items:center;z-index:4;
+  color:var(--fg2);font-size:13px;text-align:center;padding:20px;
+}
+#rollHost.empty #rollEmpty{display:grid}
+
+.staves{
+  display:flex;gap:5px;align-items:center;flex-wrap:nowrap;
+  overflow-x:auto;overflow-y:hidden;max-width:46%;padding-bottom:1px;
+  scrollbar-width:thin;
+}
+.stv{
+  display:flex;align-items:center;gap:5px;background:#12161b;border:1px solid var(--line2);
+  border-radius:4px;padding:1px 5px 1px 4px;font:11px var(--mono);flex:0 0 auto;
+}
+.stv .sw{width:8px;height:8px;border-radius:2px;flex:0 0 auto}
+.stv .nm{color:var(--fg2)}
+.stv .cnt{color:var(--fg3);font-size:10px}
+.stv .mm,.stv .ss{
+  cursor:pointer;font:10px var(--mono);padding:0 3px;border-radius:3px;color:var(--fg3);
+  border:1px solid transparent;background:none;
+}
+.stv .mm:hover,.stv .ss:hover{color:var(--fg);background:#222a33}
+.stv .mm[aria-pressed=true]{background:#3a1b1b;color:#ffb3b3;border-color:#6a2a2a}
+.stv .ss[aria-pressed=true]{background:#123028;color:#8ff3dc;border-color:#2b6b5d}
+.stv.muted{opacity:.5}
+.stvMore{font:10px var(--mono);color:var(--fg3);flex:0 0 auto}
+
+/* ───────────────────────────── note inspector ─────────────────────────── */
+#insp{flex:0 0 auto;display:flex;flex-direction:column;background:#0c0f13;padding:5px 9px 4px}
+#inspMeta{font:11px var(--mono);color:var(--fg2);display:flex;gap:12px;flex-wrap:wrap;height:16px;overflow:hidden}
+#inspMeta b{color:var(--fg)}
+#inspMeta .dim{color:var(--fg3)}
+#cInsp{flex:0 0 88px;width:100%;height:88px;display:block;min-height:0}
+#inspLegend{display:flex;gap:12px;height:13px;flex-wrap:wrap}
+.lg{font-size:10px;color:var(--fg3);display:flex;align-items:center;gap:4px}
+.lg::before{content:"";width:12px;height:2px;border-radius:1px;background:currentColor}
+.lg-bend{color:#a8c6f9}.lg-press{color:#f5c07c}.lg-timbre{color:#cbb6ff}
+
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ── narrow viewports.  Nothing that instructs the user is ever removed. ── */
+@media (max-width: 1180px) {
+  #left { width: 44%; min-width: 220px; }
+  .meterbox.opt { display: none; }
+  .zoom.opt { display: none; }
+  .zoom i { display: none; }
+  .zoom input { width: 50px; }
+  .stv .cnt { display: none; }            /* drop note counts, keep names + M/S */
+  :root { --fs: 14px; --lh: 21px; }
+  .staves { max-width: 38%; }
+}
+
+@media (max-width: 860px) {
+  #app { flex-direction: column; }
+  #left { width: auto !important; min-width: 0; flex: 1 1 55%; }
+  #right { flex: 1 1 45%; min-height: 0; }
+  #split { display: none; }
+  #diag { flex: 0 0 78px; }
+  .staves { max-width: 100%; }
+  .ph-file { display: none; }
+  /* stacked layout: give the roll the height, not the inspector */
+  #cInsp { flex: 0 0 62px; height: 62px; }
+  #insp { flex: 0 0 auto; }
+}
+
+@media (max-width: 560px) {
+  .transport .meterbox { display: none; }
+  .vol { display: none; }
+  #howto { font-size: 11.5px; }
+  #howto .tail { display: none; }
+}
+
+@media (max-height: 720px) {
+  #cInsp { flex: 0 0 66px; height: 66px; }
+  #diag { flex: 0 0 84px; }
+}

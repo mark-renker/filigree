@@ -1,0 +1,31 @@
+# examples/dorian_drift.fil — two staves drifting over a static D dorian vamp.
+#
+# Shows: `!time=note` (one line of articulation for a whole phrase), the `drift`
+# generator, a raw `cc74` lane, alternation `<a b c>` picking a different member
+# each time the bar repeats, and chord tones (`~3`, `~7`) that follow the harmony
+# instead of naming pitches.
+
+@title "Dorian drift"
+@tempo 96
+@key D dorian
+@grid 10ms
+@seed 3
+
+voicing airy { range: C3..C5, mode: quartal, size: 4, spread: 1.15 }
+
+gesture breathe = press(0.1 -> 0.75 -> 0.25, shape: ease)
+gesture haze    = timbre(0.3 -> 0.8) + timbre(drift(0.12, 0.7hz))
+
+stave vamp {
+  harm!voicing=airy | i9 | i9 | IV^7 | IV^7 |
+  press!time=note   | _/^^^\_ | _/^^^\_ | _/^^^\_ | _/^^^\_ |
+  cc74              | 2345 | 5432 | 3456 | 6543 |
+}
+
+stave melody {
+  gesture haze
+  harm            | i9        | i9        | IV^7      | IV^7      |
+  notes           | <0 2 4> 1 ~3 ~7 | 4 - 2 <0 1> | ~3 5 4 ~7 | 2 - <4 6> - |
+  bend!range=2st  | ~3~3      | __/^      | ~5  ~5    | ____/^^^  |
+  press!time=note | \__/      | \__/      | \__/      | \__/      |
+}

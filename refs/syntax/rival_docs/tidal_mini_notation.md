@@ -1,0 +1,474 @@
+# tidal_mini_notation
+Source: https://tidalcycles.org/docs/reference/mini_notation/
+Fetched: 2026-08-30
+
+**Mini-notation** is the name of a special notation used for writing patterns of various sort (*notes*, *samples*, *parameters*). To use the mini-notation, use a string delimited by quotation marks:
+
+```
+""
+```
+. Internally, the mini-notation is actually parsed and understood as a shortcut for a function that you could otherwise write using longer function compositions.
+Learning the mini-notation is **essential** for learning how to make music with **Tidal Cycles**. The notation is rather intuitive. We encourage you to try all these examples to see if you understand what effect every symbol can have on your pattern.
+
+## Mini-notation table​
+|Symbol|Description|Example|Equivalent|
+|--|--|--|--|
+|``` ~ ```|Create a rest|``` d1 $ s "~ hh" ```| |
+|``` [ ] ```|Create a pattern grouping|``` d1 $ s "[bd sd] hh" ```|``` d1 $ fastcat [s "bd sd", s "hh"] ```|
+|``` . ```|Shorthand for pattern grouping|``` d1 $ s "bd sd . hh hh hh" ```|``` d1 $ s "[bd sd] [hh hh hh] ```|
+|``` , ```|Play multiple patterns at the same time|``` d1 $ s "[bd sd, hh hh hh]" ```|``` d1 $ stack [s "bd sd", s "hh hh hh"] ```|
+|``` * ```|Repeat a pattern|``` d1 $ s "bd*2 sd" ```|``` d1 $ s "[bd bd] sd" ```|
+|``` / ```|Slow down a pattern|``` d1 $ s "bd/2" ```|``` d1 $ s (slow 2 $ "bd") ```|
+|||Create a random choice|``` d1 $ s "[bd ``` |
+``` cp ``` |
+``` hh]" ```| |
+|``` < > ```|Alternate between patterns|``` d1 $ s "bd <sd hh cp>" ```|``` d1 $ slow 3 $ s "bd sd bd hh bd cp" ```|
+|``` ! ```|Replicate a pattern|``` d1 $ s "bd!3 sd" ```|``` d1 $ s "bd bd bd sd" ```|
+|``` _ ```|Elongate a pattern|``` d1 $ s "bd _ _ ~ sd _" ```|Results in pattern
+``` (0>1/2)\|s: "bd" (4/6>1)\|s: "sd" ```|
+|``` @ ```|Elongate a pattern|``` d1 $ s "superpiano@3 superpiano" ```|``` d1 $ s "superpiano _ _ superpiano" ```|
+|``` ? ```|Randomly remove events from pattern|``` d1 $ s "bd? sd" ```|``` d1 $ fastcat [degradeBy 0.5 $ s "bd", s "sd"] ```|
+|``` : ```|Selecting samples|``` d1 $ s "bd:3" ```|``` d1 $ s "bd" # n 3 ```|
+|``` ( ) ```|Euclidean sequences|``` d1 $ s "bd(3,8)" ```|``` d1 $ euclid 3 8 $ s "bd" ```|
+|``` { } ```|Polymetric sequences|``` d1 $ s "{bd bd bd bd, cp cp hh}" ```|2nd pattern wraps:
+``` d1 $ stack [ s "bd*4", s "cp cp hh cp" ] ```|
+|``` % ```|Indicates a numerical ratio|``` d1 $ s "bd*4%2" ```|``` d1 $ s "bd*2" ``` or
+``` d1 $ s "[bd*4]/2" ```|
+|``` { }% ```|Polymetric sequence subdivision|``` d1 $ s "{bd cp hh}%8" ```|Pattern wraps:
+``` d1 $ s "bd cp hh bd cp hh bd cp" ```|
+
+## The mini-notation in depth​
+
+### Rests​
+
+Use
+
+```
+
+```
+to create rests in your patterns:
+```
+d1 $ s "~ hh"
+
+```
+
+### Pattern grouping​
+
+Picture every element of your cycle as a step. Divide a simple pattern by 4:
+
+```
+p "demo" $ s "bd bd bd bd"
+
+```
+
+Now use pattern grouping to create a subdivision of any step:
+
+```
+p "demo" $ s "[bd hh] bd bd"
+
+```
+
+You can play with infinite layers of subdivisions. Time and human perception is the limit:
+
+```
+p "demo" $ s "[bd [hh [cp sn:2] hh]] bd bd bd"
+
+```
+
+### Pattern grouping shorthand​
+
+You can use
+
+```
+
+```
+to separate multiple pattern groupings in your pattern top-level:
+```
+p "demo" $ s "bd*3 . hh*4 cp"
+
+```
+
+You can nest pattern grouping shorthands:
+
+```
+p "demo" $ s "[bd*3 . hh:2*2] . hh*4 cp"
+
+```
+
+### Superposition​
+
+You can play multiple patterns at the same time inside one pattern. This is one of the most intuitive ways of dealing with superposition/polyphony. These patterns have the 4 samples sounding together, but with different rhythmic subdivisions. The second pattern is a complete rhythm section:
+
+```
+d1 $ s "[bd*2,hh*3,[~ cp]*2, bass]"
+d1 $ s "[bd*3,hh*4,[~ cp]*2, bass*4]"
+
+```
+
+Be sure to enclose your pattern between brackets (
+
+```
+[]
+```
+) if you want to use superposition at the top-level.
+
+### Step repetition​
+
+You can repeat a step as many times as you like using the multiplication symbol (also illustrated above):
+
+```
+d1 $ note "[[c3*3],[c e g c6*3]]" # s "superpiano"
+
+d2 $ s "cp cp cp*2"
+
+```
+
+### Step division​
+
+You can slow down a pattern by using division (
+
+```
+
+```
+). This one needs a little bit of practice to be understood:
+```
+d1 $ s "bd cp/2"
+
+```
+
+The
+
+```
+clap
+```
+will only be heard every other cycle.
+
+### Alternate​
+
+You can alternate between events in your pattern using the
+
+```
+less-than
+```
+and
+```
+more-than
+```
+symbols < >. This one can be used to add a little variation to your pattern or to create nice and simple melodies and arpeggios:
+```
+d1 $ fast 2 $ n "<c e g>" # s "superpiano"
+
+d2 $ s "bd <[hh sn] [hh cp]>"
+
+```
+
+### Replicate​
+
+Use
+
+```
+
+```
+to replicate a given event
+```
+x
+```
+times:
+```
+d2 $ s "bd!2 cp!2"
+
+```
+
+This is not the same thing as the
+
+```
+
+```
+symbol.
+```
+
+```
+will create new steps or
+```
+replicate
+```
+the steps.
+```
+
+```
+will only multiply a step by a given factor:
+```
+-- so far so good
+d2 $ s "bd!2 cp!2"
+-- oh wait!
+d2 $ s "bd!2 cp*2"
+
+```
+
+### Elongate​
+
+Elongate or
+
+```
+_
+```
+will extend the duration of an event for
+```
+x
+```
+steps:
+```
+d2 $ s "bd _ _ hh*4"
+
+```
+
+You might hear a lot of silence between the first hit and the hi-hat. That's perfectly normal. Silence is cool too.
+
+### Randomization​
+
+You can use a question mark
+
+```
+
+```
+to randomly remove some events from the pattern, with a probability of
+```
+1/2
+```
+. To use a different probabilty, use a number after the question mark.
+```
+d1 $ s "bd hh? bd hh?0.8"
+
+```
+
+### Random choice​
+
+You can use the | symbol between brackets
+
+```
+[]
+```
+to choose between multiple events with an equal probability:
+```
+d1 $ s "[bd*4|hh*12|cp*2]"
+
+```
+
+### Sample Selection​
+
+When entering the name of an audio sample, you are in fact entering the name of the
+
+```
+folder
+```
+containing it. To select a specific file in the selected folder, use the
+```
+
+```
+symbol followed by any number:
+```
+p "scroll" $ s "arpy:1 arpy:2 arpy:3 arpy:4 arpy:5"
+
+-- all right, that's better
+p "scroll" $ s "[bd*4, [arpy:1,arpy:2,arpy:3,arpy:4,arpy:5](5,8)]"
+
+```
+
+You can't go too far in the folder and select a file that doesn't exist. Something like
+
+```
+cp:1238129038123
+```
+will work:
+```
+d1 $ s "cp:1238129038123"
+
+```
+
+Tidal will not complain. It will just cycle in the folder until it finds the right sample.
+
+### Euclidian Sequences​
+
+Euclidian rhythms are rhythms obtained using the greatest common divisor of two numbers. They were described in 2004 by Godfried Toussaint, a canadian computer scientist. Euclidian rhythms are really useful for computer/algorithmic music because they can accurately describe a large number of rhythms used in the most important music world traditions. The algorithm work by providing two numbers:
+
+- the number of beats
+- the number of steps/silences to fill
+
+A euclidian rhythm will distribute the first number of beats to the second numbers of steps to be filled. With Tidal, you can create euclidian rhythms by adding an event followed by the
+
+```
+(x,y)
+```
+indicator,
+```
+x
+```
+and
+```
+y
+```
+corresponding to the numbers described above:
+```
+d1 $ s "[bd(3,8), cp(2,8), hh(7,8), bass:1(7,16)]"
+
+d1 $ s "[bd(5,8), cp(4,8), hh(7,8), bass:1(7,16)]"
+
+d1 $ s "[bd(5,8), cp(1,8)?, hh(7,8), bass:1(8,16)]"
+
+```
+
+#### More examples​
+
+```
+The Euclidean Algorithm Generates Traditional Musical Rhythms by Toussaint
+(2,5) : A thirteenth century Persian rhythm called Khafif-e-ramal.
+(3,4) : The archetypal pattern of the Cumbia from Colombia, as well as a Calypso rhythm from Trinidad.
+(3,5,2) : Another thirteenth century Persian rhythm by the name of Khafif-e-ramal, as well as a Rumanian folk-dance rhythm.
+(3,7) : A Ruchenitza rhythm used in a Bulgarian folk-dance.
+(3,8) : The Cuban tresillo pattern.
+(4,7) : Another Ruchenitza Bulgarian folk-dance rhythm.
+(4,9) : The Aksak rhythm of Turkey.
+(4,11) : The metric pattern used by Frank Zappa in his piece titled Outside Now.
+(5,6) : Yields the York-Samai pattern, a popular Arab rhythm.
+(5,7) : The Nawakhat pattern, another popular Arab rhythm.
+(5,8) : The Cuban cinquillo pattern.
+(5,9) : A popular Arab rhythm called Agsag-Samai.
+(5,11) : The metric pattern used by Moussorgsky in Pictures at an Exhibition.
+(5,12) : The Venda clapping pattern of a South African children’s song.
+(5,16) : The Bossa-Nova rhythm necklace of Brazil.
+(7,8) : A typical rhythm played on the Bendir (frame drum).
+(7,12) : A common West African bell pattern.
+(7,16,14) : A Samba rhythm necklace from Brazil.
+(9,16) : A rhythm necklace used in the Central African Republic.
+(11,24,14) : A rhythm necklace of the Aka Pygmies of Central Africa.
+(13,24,5) : Another rhythm necklace of the Aka Pygmies of the upper Sangha.
+
+```
+
+#### Euclidian sequence offset​
+
+You can also specify a third number for the sequence. This provides an offset, moving the pattern left by the number of steps. For example,
+
+```
+(3,8,1)
+```
+will shift the sequence left by one of the 8 specified steps.
+```
+x ~ ~ x ~ ~ x ~ (3,8)
+~ ~ x ~ ~ x ~ x (3,8,1)
+~ x ~ ~ x ~ x ~ (3,8,2)
+x ~ ~ x ~ x ~ ~ (3,8,3)
+
+```
+
+Here is how you can have a euclidian sequence spread across different samples:
+
+```
+d1 $ s "east(4,7)" # n "2 3 0 5"
+d1 $ s "east(4,7)" # n (irand 8)
+
+```
+
+#### Euclidian variation: distrib​
+
+The
+
+```
+distrib
+```
+function provides an easy way to get rhythmic variation with euclidian patterns. With 2 inputs,
+```
+distrib
+```
+will be the same as the Euclid sequence. So
+```
+distrib [9,16]
+```
+is the same as euclid
+```
+e(9,16)
+```
+. Distrib adds an additional input to specify the number of Euclidian beats to play. You put that number **either** first or last.- When it is first --
+
+ ```
+ distrib [5, 9,16]
+ ```
+ -- Tidal will distribute and play**5** of the 9/16 Euclid beats. This creates a new euclid pattern variant.
+- When it is last --
+
+ ```
+ distrib [9,16, 5]
+ ```
+ -- Tidal will play the first**5** beats of the 9/16 Euclid beats. This reinforces the first part of the Euclid pattern.
+
+```
+-- these two are the same
+d1 $ distrib [9,16] $ sound "east:2"
+d2 $ "e(9,16)" # sound "east:2"
+
+-- distributes across 5 of the euclid 9/16 beats
+d1 $ distrib [5, 9,16] $ sound "east:2"
+
+-- plays only the first 5 of the euclid 9,16 pattern
+d1 $ distrib [9,16, 5] $ sound "east:2"
+
+```
+
+### Polymetric Sequences​
+
+Creating polymetric sequences is a fairly advanced thing you can do using the **Tidal** mini-notation. To do so, enclose your pattern between curly brackets (
+
+```
+{}
+```
+). In the 1st example the 3 note and 4 note patterns sound together. The 4 beat pattern wraps and you hear the cr sample on different parts of the 3 beat pattern:
+```
+d1 $ s "{bd sd stab, cp arpy cr arpy}"
+d1 $ s "{bd*2, hh*4, bd hh 808:4}"
+
+```
+
+### Ratio Shorthand​
+
+You can use % to write floating point values in patterns. The symbol divides two numbers -
+
+```
+6%3
+```
+would be 2.
+It is not the same as the
+
+```
+
+```
+symbol for step division.
+```
+
+```
+manipulates time and slows down a pattern using division.
+```
+
+```
+is only used numerically to denote ratios or float values.
+```
+-- Here / slows down the entire pattern by 2. A pattern originally playing the bd sample 4 times will slow it down to play it only 2 times:
+d1 $ s "[bd*4]/2"
+-- Below % is only used to divide 4 and 2. It doesn't influence the entire pattern itself. So 4%2 will return 2, which is the same as d1 $ s "bd*2"
+d2 $ s "[bd*4%2]"
+-- d2 $ s "[bd*4]%2" is invalid since % does not handle whole patterns.
+
+```
+
+### Polymetric Sequences with Subdivision​
+
+Alternatively, you can also add the precise subdivision you are looking for by using
+
+```
+
+```
+followed by the subdivision number:
+```
+d1 $ s "{bd hh 808:4}%8"
+d2 $ s "{bd cp 808:5}%4" # speed 2
+
+```

@@ -1,0 +1,7 @@
+@key C minor
+voicing v { mode: smooth, size: 4 }
+stave t2 {
+  harm!voicing=v | ii7b5 | V7           | i9       |
+  notes          | .     | C5 Eb5 D5 D5 | ~3 - - - |
+  bend!range=4st |       | xxx>3        |          |
+}

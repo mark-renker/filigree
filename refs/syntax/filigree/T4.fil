@@ -1,0 +1,7 @@
+stave t4 {
+  voices      | { bass: C4 - - - ; tenor: Eb4 - - - ; alto: G4 - - - ; sop: Bb4 - - - } |
+  press@bass  | ___/^^^^ |
+  press@tenor | ^^^^\___ |
+  timbre@alto | __/^^^^^ |
+  timbre@sop  | ^^^^^\__ |
+}

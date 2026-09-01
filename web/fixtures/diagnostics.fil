@@ -1,0 +1,39 @@
+# diagnostics.fil — the playground's "show me the warnings panel" document.
+#
+# Everything in here compiles, plays and sounds fine; each block deliberately
+# trips one of Filigree's *warnings* so a first-time visitor can see what a
+# diagnostic looks like, where it points, and how to fix it.  Hard errors live in
+# the error panel instead and are not demonstrated here — this file must always
+# compile successfully.
+
+@title  "diagnostics: what the warnings panel shows you"
+@tempo  96bpm
+@meter  4/4
+@key    A minor
+@grid   10ms
+@seed   3
+
+voicing plain { range: C3..C5, mode: smooth, size: 4 }
+@voicing plain
+
+# 1. a curve lane whose bar count neither divides nor is divided by the notes
+#    lane's: three bars of press under four bars of notes loses a bar.
+stave lanes_that_do_not_cycle {
+  notes | 0 2 3 5 | 7 5 3 2 | 0 3 7 3 | 5 3 2 0 |
+  press | ^ / _ - | - \ ^ ^ | _ / ^ \ |
+}
+
+# 2. a curve lane with more anchors than the notes lane has slots, and not an
+#    exact multiple of them: 6 press anchors under 4 notes.
+stave anchors_that_do_not_line_up {
+  notes | 0 2 3 5 |
+  press | ^ / _ - ^ \ |
+}
+
+# 3. the same lane written twice with different options, which cannot be merged
+#    into one lane, so the second copy restarts at bar 1.
+stave repeated_lane_with_different_options {
+  notes          | 0 2 3 5 | 7 5 3 2 |
+  bend!range=2st | _ / - \ | _ - / - |
+  bend!range=7st | _ \ - / | _ - \ - |
+}

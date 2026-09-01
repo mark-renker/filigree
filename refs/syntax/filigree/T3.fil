@@ -1,0 +1,3 @@
+gesture swell(rate: 6hz, depth: 0.35st, onset: 35%) =
+  bend((wiggle(rate, depth) * ramp(0, 1)) @ onset..100%)
+stave t3 { notes | C4!swell - - - | }

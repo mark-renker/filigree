@@ -1,0 +1,197 @@
+{
+  "pieces": {
+    "P1": {
+      "title": "lexer+parser",
+      "bar": "Ziffers/Strudel/Alda/Tidal syntax (refs/syntax/tasks.md)",
+      "state": "done",
+      "rounds": 3,
+      "best": "round 3"
+    },
+    "P2": {
+      "title": "harmony+voicing",
+      "bar": "music-theory ground truth + Hookpad keystrokes",
+      "state": "done",
+      "rounds": 2,
+      "best": "round 2"
+    },
+    "P3": {
+      "title": "gestures+curves",
+      "bar": "Csound f-tables, Sonic Pi _slide, MusicXML bend",
+      "state": "done",
+      "rounds": 2,
+      "best": "round 2"
+    },
+    "P4": {
+      "title": "MPE renderer",
+      "bar": "RP-053 / MPE 1.1 conformance (machine-checked)",
+      "state": "done",
+      "rounds": 2,
+      "best": "round 2"
+    },
+    "P5": {
+      "title": "feel/humanization",
+      "bar": "real performance MIDI stats (refs/midi/stats.json)",
+      "state": "done",
+      "rounds": 2,
+      "best": "round 2"
+    },
+    "P6": {
+      "title": "playground UI",
+      "bar": "strudel.cc REPL + signal piano roll screenshots",
+      "state": "done",
+      "rounds": 2,
+      "best": "round 2"
+    },
+    "P7": {
+      "title": "integration+docs",
+      "bar": "Alda time-to-first-sound",
+      "state": "done",
+      "rounds": 2,
+      "best": "round 2"
+    },
+    "P8": {
+      "title": "Documentation truth",
+      "bar": "Every documented example compiles with zero warnings and every documented claim is measured",
+      "state": "done",
+      "rounds": 1,
+      "best": "\u2014"
+    }
+  },
+  "rounds": [
+    {
+      "piece": "P2",
+      "round": 1,
+      "verdict": "REFERENCE",
+      "reason": "Correctness/voice-leading/robustness lost. Modal interchange takes root but not quality from the borrowed mode (iiid in C minor -> [3,6,10], should be [3,7,10]); smooth voicing worse than naive close in 15/400 progressions; voicings escape the requested range and top:melody deletes the 7th.",
+      "evidence": "tests/critic_p2_truth.py, refs/verdicts/P2_round1.md",
+      "became_best": false,
+      "when": "2026-08-30 05:14:04"
+    },
+    {
+      "piece": "P4",
+      "round": 1,
+      "verdict": "REFERENCE",
+      "reason": "Conformance/robustness/economy lost. Thinner assumes an interpolating receiver but MIDI bend is hold-last-value: a 1-beat 0->+1st ramp becomes 2 messages, 98.75 cents hold error vs the 3-cent bar. Channel-sharing path drops the mandated preamble and pressure-0 (20 violations). OverflowError on inf in a curve.",
+      "evidence": "refs/verdicts/P4_round1.md, tools/critic_smf_check.py",
+      "became_best": false,
+      "when": "2026-08-30 05:16:40"
+    },
+    {
+      "piece": "P3",
+      "round": 1,
+      "verdict": "REFERENCE",
+      "reason": "Expressiveness won but correctness, concision and honesty-of-the-bar lost. Rate primitives do not reclock inside composed gestures: bend(wiggle(5.5hz,..)*ramp @35%..100%) runs at 8.46Hz and the shipped plot ships that wrong rate. Overclaimed against Sonic Pi's _slide_shape; ~ overshoots the lane range; @window refits instead of restricting.",
+      "evidence": "refs/verdicts/P3_round1.md, tests/critic_p3_curves.py (6 failures)",
+      "became_best": false,
+      "when": "2026-08-30 05:18:05"
+    },
+    {
+      "piece": "P2",
+      "round": 2,
+      "verdict": "CANDIDATE",
+      "reason": "All 91 critic ground-truth symbols now correct (modal interchange derives quality from the borrowed scale); worst-case smooth-minus-close voice-leading margin 0 semitones over 500 randomised progressions; range discipline and top:melody guide-tone protection enforced; 24 malformed-symbol rejections with real line/col.",
+      "evidence": "tests/critic_p2_truth.py 4/4, 286 passed",
+      "became_best": true,
+      "when": "2026-08-30 19:17:22"
+    },
+    {
+      "piece": "P4",
+      "round": 2,
+      "verdict": "CANDIDATE",
+      "reason": "Thinning re-derived under hold-last-value semantics: max hold error 4.88 cents on the audit score vs round 1's 98.75; channel reuse now always emits the mandated preamble and pressure-0 (touching_1ch went from losing 100% of expression to a clean stream); non-finite/NaN/zero-length policy documented, warned, and tested.",
+      "evidence": "tools/critic_smf_check.py 11/12 defect-free (exhaustion is pigeonhole-only), audit 26/26",
+      "became_best": true,
+      "when": "2026-08-30 19:17:22"
+    },
+    {
+      "piece": "P3",
+      "round": 2,
+      "verdict": "CANDIDATE",
+      "reason": "Correctness closed: rate primitives now hold 5.5000 Hz in all five nesting configs (was 8.46 Hz), @window restricts per SPEC, ~ compresses inside the lane range (^~ now 2.000st not 2.667). Honest recount of refs/syntax/curves.md hands 3 of 5 rows to the rivals on character count (vibrato 58 vs Csound 50, swell 57 vs 54, third 23 vs 21) - recorded, not spun; Filigree keeps expressiveness and reuse (96 vs 193).",
+      "evidence": "tests/critic_p3_curves.py 47/47, 183 passed, refs/plots/*.png regenerated with generated captions",
+      "became_best": true,
+      "when": "2026-08-30 19:19:00"
+    },
+    {
+      "piece": "P1",
+      "round": 1,
+      "verdict": "REFERENCE",
+      "reason": "Blind forced pick: rivals win on concision (T1 63 vs Alda 39 chars = 1.62x, failing the 1.3x bar; T5 64 vs Ziffers 51). Four real defects, worst being that '_' on a bend lane meant lane MINIMUM, so nocturne.fil's drawn 'resting' floor played three bars a minor third flat; the promised misalignment warning never fired; a typo'd chord was only a warning and silently deleted a bar. Filigree won readability, diffability and expressive power on 4 of 6 tasks.",
+      "evidence": "refs/verdicts/P1_round1.md; all six task solutions verified musically via explain (T2 lands pitch 75 = pc3 of i9)",
+      "became_best": false,
+      "when": "2026-08-30 19:42:17"
+    },
+    {
+      "piece": "P6",
+      "round": 1,
+      "verdict": "REFERENCE",
+      "reason": "Blind forced pick split 2-2: candidate won information density and per-note curve readability, lost editor legibility (12px/22 colours vs Strudel's 15px/4; bar separators at 1.84:1 contrast) and first-five-seconds guidance. Two critical bugs: the playground could never display a compiler error (server sends error{}, client read errors[]) and so blamed the network, and the default document did not compile.",
+      "evidence": "refs/verdicts/P6_round1.md, refs/ui/critic_p6_live_1440x900.png, 7 break screenshots, own reference capture refs/ui/signal_pianoroll.png",
+      "became_best": false,
+      "when": "2026-08-30 19:42:17"
+    },
+    {
+      "piece": "P1",
+      "round": 3,
+      "verdict": "CANDIDATE",
+      "reason": "All four P1 defects closed. '_' now means the lane REST value (bend 0st) and a new glyph 'v' means lane minimum, so nocturne.fil's opening went from bend[-3.00..-3.00] (sounding Eb4 under a drawn 'resting' floor) to bend[0.00..0.00] sounding F#4. The curve-lane misalignment warning now fires on inexact anchor/slot ratios and stays silent on exact ones. An unknown chord symbol is a hard error with line:col and a suggestion instead of a warning that silently deleted a bar; --lenient sustains the previous chord instead. explain now prints key names, pitch names and where every drawn bend lands.",
+      "evidence": "749 passed; 7 examples compile with 0 warnings and audit clean; 4 assertions in tests/critic_p3_curves.py rewritten by the lead from '_' to 'v' because they encoded the superseded semantics",
+      "became_best": true,
+      "when": "2026-08-30 19:55:46"
+    },
+    {
+      "piece": "P7",
+      "round": 2,
+      "verdict": "CANDIDATE",
+      "reason": "Round-3 lead fixes closed all four documentation defects the stranger critic filed: the README front-page example now compiles with zero warnings and is the shipped file examples/front_page.fil; the concision claim is replaced by a generated, compile-checked scoreboard in refs/syntax/tasks.md (measured: Filigree shorter on 2 of 6 tasks, longer on 4 -- the README previously claimed 4 of 6); --lenient now reaches the parser, so a typo'd chord symbol, a malformed pitch set and an unknown glyph downgrade to warnings instead of exiting 2; and the documented '>root' target parses (with >third/>fifth/>seventh aliases). The 'lanes line up by construction' overclaim is rewritten to state what the compiler actually guarantees.",
+      "evidence": "tests/test_docs.py (16 tests) compiles every fenced Filigree block in README.md and docs/*.md and asserts zero warnings, checks the README's front-page block against examples/front_page.fil, checks every documented CLI subcommand and flag exists, checks the README concision number equals the scorer's, and covers strict-vs-lenient behaviour end to end via the CLI. Full suite: 788 passed, 5 failed (all in tests/test_feel.py, P5's in-flight round-2 rebuild).",
+      "became_best": true,
+      "when": "2026-08-31 00:52:00"
+    },
+    {
+      "piece": "P5",
+      "round": 2,
+      "verdict": "CANDIDATE",
+      "reason": "The round-1 feel engine was rejected because the critic showed it produced statistically wrong humanisation: velocity was memoryless (lag-1 r -0.010 against a reference +0.452), timing residuals were Gaussian rather than heavy-tailed (kurtosis +0.058 against +5.64), gate ratios were far too narrow (IQR width 0.17-0.48 against 2.93), and metrical position had no effect at all (Kruskal-Wallis p 0.60-0.85, spans under 1.6ms). The rebuild reproduces all six headline statistics inside the reference intervals across four presets and five seeds, and does so with the right mechanism rather than by tuning constants: AR(1)/OU memory on timing, velocity and articulation; leptokurtosis from a piecewise-linear agogic drift with log-normal amplitude, on the finding that the reference's heavy tail is a between-passage scale mixture rather than per-note spikes; per-beat timing and accent profiles; a log-normal gate model; and one tempo curve per stave so a chord split across the hands stays together. Two misses are disclosed rather than hidden: residual/tatum 0.066-0.070 against [0.071, 0.084], and timing lag-1 +0.76..+0.87 against +0.55 [+0.45, +0.68] -- the rubato is smoother than a human's. The unit-handling defects are fixed too: percentages are explicit, the 400%-means-4% bug is gone, and absurd shifts are clamped with a warning that names the parameter and value.",
+      "evidence": "PYTHONPATH=src python -m pytest -p no:warnings -> 853 passed, 0 failed (tests/test_feel.py contributes 85). Measured against the reference estimator on a 96-bar probe at 120bpm, median of 5 seeds: median |residual| 8.31-8.72ms vs 8.32 [6.90,10.30]; kurtosis +3.68..+5.44 vs +5.64 [+2.87,+7.79]; velocity sd 11.6-13.4 vs 11.86 [10.73,14.53]; velocity lag-1 +0.42..+0.49 vs +0.452 [+0.385,+0.538]; gate IQR width 1.74-3.05 vs 2.93 [1.59,3.63]; gate median 0.91-1.09 vs 0.986. Metrical effect now KW p 8e-23..7e-97 with 5.5-11ms spans. Melody lead -5.2..-7.2ms vs reference -5.32. Determinism, seed variety, 0%-bit-exactness and pitch-multiset preservation all verified. Constants documented in refs/specs/feel_truth.md and asserted against the code by test.",
+      "became_best": true,
+      "when": "2026-08-31 01:22:02"
+    },
+    {
+      "piece": "P8",
+      "round": 1,
+      "verdict": "CANDIDATE",
+      "reason": "Round-3 SPEC amendment pass. The round-3 fixer filed nine numbered amendment requests and deliberately did not edit the SPEC; all nine are now applied with the implementation, not the request, as the source of truth. The specification now defines a slot once and defines it in anchors rather than characters, carries a per-lane table of min/rest/centre/max values, states the three kinds of no-data and the note-on reset, states gesture-attachment precedence, states the chord-spelling discrimination rule, documents the '0 -2' versus '0 - 2' whitespace trap, and lists the recognised lane options. Four places where the code contradicted my own rulings were found and documented rather than papered over: '_' and '-' coincide on timbre, amp and pan and differ only on press and cc<n> (my ruling said the opposite); the note-on reset covers only bend, CC74 and pressure, not amp, pan or cc<n>; gesture attachments do not compose, the earlier-listed source wins because the sampler fills NaN gaps only; and the parser accepts postfix modifiers in any order, with no duration/dot modifier and no postfix '~' ornament, so the request's own example does not parse. One proposed warning was rejected: flagging a notes bar that mixes both readings of '-' would fire on legal existing files.",
+      "evidence": "tests/test_docs.py compiles every fenced Filigree block in README.md and docs/*.md and asserts zero warnings; 18 blocks including 2 new examples. It also pins the README front-page block to examples/front_page.fil, checks every documented CLI subcommand and flag exists, checks the README concision figure equals the generated scoreboard, and covers strict-versus-lenient CLI behaviour end to end. Contradictions evidenced by rendered MPE event dumps and file:line references in /home/user/workspace/R3_spec_amendments_report.md, with corrections appended to refs/RULINGS_R3.md. Full suite after the pass: 853 passed, 0 failed.",
+      "became_best": true,
+      "when": "2026-08-31 01:22:15"
+    },
+    {
+      "piece": "P5",
+      "round": 1,
+      "verdict": "REFERENCE",
+      "reason": "Blind feel critic. The engine was deterministic, preserved every pitch and never reordered notes, but its humanisation was statistically the wrong shape: velocity was memoryless (lag-1 r -0.010 against a real-performance +0.452), timing residuals were Gaussian rather than heavy-tailed (kurtosis +0.058 against +5.64), gate ratios were far too narrow (IQR width 0.17-0.48 against 2.93), and metrical position had no measurable effect (KW p 0.60-0.85, spans under 1.6ms). Unit handling was also wrong: '400%' was read as 4%, and absurd shifts were applied without complaint.",
+      "evidence": "Critic report refs/verdicts/P5_round1.md: six statistics measured against refs/midi/stats.json on a 96-bar probe, five seeds, four presets.",
+      "became_best": false,
+      "when": "2026-08-31 01:22:52"
+    },
+    {
+      "piece": "P6",
+      "round": 2,
+      "verdict": "CANDIDATE",
+      "reason": "Round-1 UI critic split 2-2 and named four concrete defects; the round-2 builder closed all four. The editor no longer traps the keyboard (Tab indents, Esc-then-Tab leaves), diagnostics text contrast went from 1.84:1 to 6.20:1 (WCAG AA), the curve overlay's horizontal drift against the piano roll went from +1.921px to +0.000px, and the WebAudio path stopped leaking nodes, gained a limiter, and now scales bend by the score's own bend range instead of a hardcoded 48st.",
+      "evidence": "774 tests passing at the time of the verdict; overlay drift measured by web/tools/measure_drift.py, contrast computed from the shipped stylesheet, keyboard escape covered by test.",
+      "became_best": true,
+      "when": "2026-08-31 01:22:52"
+    },
+    {
+      "piece": "P7",
+      "round": 1,
+      "verdict": "REFERENCE",
+      "reason": "Stranger critic: a first-time reader given only the repository. Verdict on 'would you keep using this tomorrow' was yes -- the compiler and the playground held up and a machine audit of the MPE output kept 26 of 26 conformance checks. But the documentation was found untrustworthy: the README's front-page example did not compile, the concision claim ('wins four of six') was unmeasured and turned out to be false, --lenient did not actually rescue the errors it advertised, and a documented '>root' target did not parse.",
+      "evidence": "refs/verdicts/P7_stranger_round1.md; MPE audit 26/26 KEPT via tools/audit_mpe.py.",
+      "became_best": false,
+      "when": "2026-08-31 01:22:52"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+# examples/pulse.fil — 7/8, named voices, a reusable `part`, phrase transforms
+# and probability.  This is the "one chord, four independently expressive
+# voices" idea from SPEC §6 stretched over a whole piece.
+#
+#   filigree render examples/pulse.fil -o pulse.mid
+#   filigree explain examples/pulse.fil
+
+@title "Pulse in seven"
+@tempo 132
+@meter 7/8
+@key A minor
+@seed 5
+
+voicing tight  { range: C3..C5, mode: shell, size: 3 }
+feel    driven { timing: -6ms flat, velocity: 9%, gate: 3%, on: 1,4, seed: 5 }
+
+gesture snap  = press(0.9 -> 0.2, shape: linear)
+gesture curl  = bend(0 -> 0.3st -> 0, shape: ease)
+
+part riff {
+  notes | 0 . 0 2 . 3 0 | 0 . 5 . 3 2 0 |
+  press!shape=linear | ^\_^\_^ | ^\_^^\_ |
+}
+
+stave bass {
+  feel driven
+  harm!voicing=tight | i7 | iv7 | bVI^7 | V7alt |
+  play riff
+  play riff >> transpose(4) >> retro
+  # `_` rests in tune (0 st); `v` is the deliberate dive to the lane floor,
+  # and digits are explicit levels, so nothing is accidentally detuned.
+  bend!range=4st     | _______ | ___4567 | __v____ | __677_>3 |
+}
+
+stave chords {
+  feel driven
+  harm!voicing=tight | i7 | iv7 | bVI^7 | V7alt |
+  voices     | { low: @low ; mid: ~7 ; top: ~3 } | { low: @root ; mid: ~7 ; top: ~3 } | { low: @low ; mid: ~7 ; top: ~3 } | { low: @root ; mid: ~7 ; top: ~3 } |
+  press@low  | _/^^^^^\ | _/^^^^^\ | _/^^^^^\ | _/^^^^^\ |
+  press@mid  | ^^\____/ | ^^\____/ | ^^\____/ | ^^\____/ |
+  timbre@top | __/^^^^^ | ^^^^^\__ | __/^^^^^ | ^^^^^\__ |
+}
+
+stave sparkle {
+  gesture curl
+  notes!gesture=snap | ^^0 ^^2?60 . ^^3? . ^^5?60 ^^7 | . ^^7 ^^5?60 . ^^3? . ^^0 |
+}

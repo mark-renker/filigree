@@ -1,0 +1,122 @@
+[
+ {
+  "file": "Alexander_Scriabin__3_Etudes_Op_65.mid",
+  "composer": "Alexander Scriabin",
+  "title": "3 Etudes, Op. 65",
+  "year": "2006",
+  "duration_s": 397.9,
+  "split": "validation",
+  "orig": "2006/MIDI-Unprocessed_17_R1_2006_01-06_ORIG_MID--AUDIO_17_R1_2006_04_Track04_wav.midi",
+  "bytes": 47516
+ },
+ {
+  "file": "Antonio_Soler__Sonata_No_10_in_B_Minor.mid",
+  "composer": "Antonio Soler",
+  "title": "Sonata No. 10 in B Minor",
+  "year": "2009",
+  "duration_s": 232.8,
+  "split": "train",
+  "orig": "2009/MIDI-Unprocessed_09_R1_2009_01-04_ORIG_MID--AUDIO_09_R1_2009_09_R1_2009_01_WAV.midi",
+  "bytes": 26224
+ },
+ {
+  "file": "Claude_Debussy__Feux_d_artifice_from_Book_II.mid",
+  "composer": "Claude Debussy",
+  "title": "\"Feux d'artifice\" from Book II",
+  "year": "2008",
+  "duration_s": 242.8,
+  "split": "train",
+  "orig": "2008/MIDI-Unprocessed_10_R3_2008_01-05_ORIG_MID--AUDIO_10_R3_2008_wav--4.midi",
+  "bytes": 29106
+ },
+ {
+  "file": "Domenico_Scarlatti__Sonata_K_54.mid",
+  "composer": "Domenico Scarlatti",
+  "title": "Sonata K. 54",
+  "year": "2008",
+  "duration_s": 205.8,
+  "split": "test",
+  "orig": "2008/MIDI-Unprocessed_09_R3_2008_01-07_ORIG_MID--AUDIO_09_R3_2008_wav--1.midi",
+  "bytes": 24896
+ },
+ {
+  "file": "Felix_Mendelssohn__Rondo_Capriccioso_in_E_Minor_Op_14.mid",
+  "composer": "Felix Mendelssohn",
+  "title": "Rondo Capriccioso in E Minor, Op. 14",
+  "year": "2013",
+  "duration_s": 362.8,
+  "split": "validation",
+  "orig": "2013/ORIG-MIDI_02_7_6_13_Group__MID--AUDIO_06_R1_2013_wav--4.midi",
+  "bytes": 46567
+ },
+ {
+  "file": "Franz_Liszt__La_Campanella.mid",
+  "composer": "Franz Liszt",
+  "title": "\"La Campanella\"",
+  "year": "2008",
+  "duration_s": 273.2,
+  "split": "train",
+  "orig": "2008/MIDI-Unprocessed_09_R1_2008_01-05_ORIG_MID--AUDIO_09_R1_2008_wav--3.midi",
+  "bytes": 37375
+ },
+ {
+  "file": "Franz_Schubert__Der_Mueller_und_der_Bach.mid",
+  "composer": "Franz Schubert",
+  "title": "\"Der Mueller und der Bach\"",
+  "year": "2009",
+  "duration_s": 336.4,
+  "split": "validation",
+  "orig": "2009/MIDI-Unprocessed_08_R1_2009_01-04_ORIG_MID--AUDIO_08_R1_2009_08_R1_2009_02_WAV.midi",
+  "bytes": 34415
+ },
+ {
+  "file": "Fritz_Kreisler__Liebesfreud.mid",
+  "composer": "Fritz Kreisler / Sergei Rachmaninoff",
+  "title": "Liebesfreud",
+  "year": "2011",
+  "duration_s": 370.0,
+  "split": "train",
+  "orig": "2011/MIDI-Unprocessed_17_R2_2011_MID--AUDIO_R2-D5_06_Track06_wav.midi",
+  "bytes": 52123
+ },
+ {
+  "file": "Fr_d_ric_Chopin__12_Etudes_Op_25.mid",
+  "composer": "Fr\u00e9d\u00e9ric Chopin",
+  "title": "12 Etudes, Op. 25",
+  "year": "2004",
+  "duration_s": 327.3,
+  "split": "train",
+  "orig": "2004/MIDI-Unprocessed_SMF_05_R1_2004_01_ORIG_MID--AUDIO_05_R1_2004_03_Track03_wav.midi",
+  "bytes": 47553
+ },
+ {
+  "file": "George_Frideric_Handel__Chaconne_in_G.mid",
+  "composer": "George Frideric Handel",
+  "title": "Chaconne in G",
+  "year": "2009",
+  "duration_s": 329.0,
+  "split": "train",
+  "orig": "2009/MIDI-Unprocessed_18_R1_2009_01-03_ORIG_MID--AUDIO_18_R1_2009_18_R1_2009_01_WAV.midi",
+  "bytes": 39985
+ },
+ {
+  "file": "Georges_Bizet__Chanson_Boheme_de_l_Opera_Carmen_by_Geor.mid",
+  "composer": "Georges Bizet / Moritz Moszkowski",
+  "title": "Chanson Boheme de l'Opera \"Carmen\" by Georges Bizet",
+  "year": "2017",
+  "duration_s": 336.5,
+  "split": "train",
+  "orig": "2017/MIDI-Unprocessed_058_PIANO058_MID--AUDIO-split_07-07-17_Piano-e_2-02_wav--5.midi",
+  "bytes": 47422
+ },
+ {
+  "file": "Isaac_Alb_niz__Asturias.mid",
+  "composer": "Isaac Alb\u00e9niz",
+  "title": "Asturias",
+  "year": "2009",
+  "duration_s": 308.7,
+  "split": "train",
+  "orig": "2009/MIDI-Unprocessed_03_R1_2009_03-08_ORIG_MID--AUDIO_03_R1_2009_03_R1_2009_06_WAV.midi",
+  "bytes": 30626
+ }
+]

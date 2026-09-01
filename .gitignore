@@ -1,0 +1,30 @@
+# --- Python build / env artifacts -----------------------------------------
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+
+# --- macOS -----------------------------------------------------------------
+.DS_Store
+
+# --- Local render output ---------------------------------------------------
+*.mid
+!examples/*.mid
+
+# --- Third-party reference material, deliberately not redistributed --------
+# The MAESTRO v3.0.0 performance excerpts are CC BY-NC-SA 4.0 (Google LLC).
+# They are the measurement corpus for the feel engine, not part of this
+# MIT-licensed project. refs/midi/SOURCES.md documents the exact archive URL,
+# checksum and per-file paths so anyone can re-create the corpus locally.
+refs/midi/*.mid
+
+# Screenshots of other people's products, captured only as the internal
+# quality bar for the UI comparison (see refs/BAR.md, which cites both by URL).
+refs/ui/strudel_repl.png
+refs/ui/signal_pianoroll.png
+refs/ui/signal_pianoroll_empty.png
+refs/ui/critic_p6_crop_ref_signal_roll.png
+refs/ui/critic_p6_crop_ref_strudel_topleft.png

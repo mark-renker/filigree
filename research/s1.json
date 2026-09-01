@@ -1,0 +1,614 @@
+[
+ {
+  "q": "TidalCycles syntax pattern language",
+  "ok": true,
+  "hits": [
+   {
+    "u": "https://tidalcycles.org/",
+    "t": "Live code with Tidal Cycles | Tidal Cycles",
+    "s": "Tidal Cycles (or 'Tidal' for short) is a free/open source live coding environment for algorithmic patterns, written in Haskell.\nTidal is using SuperCollider, another open-source software, for synthesis and MIDI.\n...\nTidal Cycles allows you to make patterns with code.\nIt includes language for describ"
+   },
+   {
+    "u": "https://tidalcycles.org/docs/reference/patterns/",
+    "t": "Patterns | Tidal Cycles",
+    "s": "You make music with **Tidal** by creating patterns.\nPatterns are always declared using a specific name, `d1 ...\nd9`, `p \"dada\"`, `p 123123`, followed by the content of the pattern.\nThese patterns are `connections` to the **SuperDirt** synthesizer that you can use to play audio samples, synthesizers,"
+   },
+   {
+    "u": "https://www.scribd.com/document/494937172/Tidal-Sheet",
+    "t": "Tidal Sheet",
+    "s": "This document provides examples and explanations of patterns and functions in TidalCycles, a domain-specific language for live coding with music and sound.\nIt shows how to:\n1) Create patterns using mini-notation to sequence sounds over time.\n2) Pass patterns as arguments to functions to manipulate t"
+   },
+   {
+    "u": "https://en.wikipedia.org/wiki/TidalCycles",
+    "t": "TidalCycles - Wikipedia",
+    "s": "**TidalCycles** (also known as **Tidal**) is a live coding environment which is designed for improvising and composing music.\nTechnically, it is a domain-specific language embedded in the functional programming language Haskell, and is focused on generating and manipulating audiovisual patterns.\nIt "
+   },
+   {
+    "u": "https://tidalcycles.org/docs/reference/pattern_structure/",
+    "t": "Pattern Structure - Tidal Cycles",
+    "s": "A core feature of **Tidal** is the ease in which two patterns can be combined.\nFor example, these are two patterns being combined by adding together their elements:\n```\n\"2 3\" + \"4 5 6\"\n```\nThe result of the above is equivalent to the pattern `\"6 [7 8] 9\"`.\nBut why?\n...\nUnlike in previous versions of"
+   },
+   {
+    "u": "https://mzadel.github.io/tidalfundamentals/",
+    "t": "Learning Tidal Fundamentals",
+    "s": "I tried installing a few different times in a few different ways, and the method I preferred was the following:\n- Use `ghcup` (https://www.haskell.org/ghcup/) - Install `ghc` with `ghcup`\n- Add `$HOME/.ghcup/bin:$HOME/.ghcup/ghc/8.10.7/bin` to `$PATH` in `.bashrc`\n- Install `cabal` with `ghcup`\n- `c"
+   }
+  ]
+ },
+ {
+  "q": "Strudel web live coding docs",
+  "ok": true,
+  "hits": [
+   {
+    "u": "https://strudel.cc/",
+    "t": "Strudel REPL",
+    "s": "You have found strudel, a new live coding platform to write dynamic music pieces in the browser!\n...\nTo get started:1.\nhit play - 2.\nchange something - 3.\nhit update\nTo get started, check out the interactive tutorial.\nAlso feel free to join the discord channel to ask any questions, give feedback or "
+   },
+   {
+    "u": "https://strudel.cc/learn/getting-started/",
+    "t": "Getting Started Strudel",
+    "s": "Welcome to the Strudel documentation pages!\nThese pages will introduce you to Strudel, a web-based live coding environment that implements the Tidal Cycles algorithmic pattern language.\n...\nStrudel is a version of Tidal Cycles written in JavaScript, initiated by Alex McLean and Felix Roos in 2022.\n."
+   },
+   {
+    "u": "https://strudel.cc/technical-manual/repl/",
+    "t": "REPL Strudel",
+    "s": "While Strudel can be used as a library in any JavaScript codebase, its main, reference user interface is the Strudel REPL^1^, which is a browser-based live coding environment.\nThis live code editor is dedicated to manipulating Strudel patterns while they play.\nThe REPL features built-in visual feedb"
+   },
+   {
+    "u": "https://github.com/tidalcycles/strudel/wiki/Technical-Manual",
+    "t": "Technical Manual \u00b7 tidalcycles/strudel Wiki",
+    "s": "This document introduces you to Strudel in a technical sense.\nIf you just want to *use* Strudel, have a look at the Tutorial.\n...\nThe REPL is the place where all packages come together to form a live coding system.\nIt can also be seen as a reference implementation for users of the library."
+   },
+   {
+    "u": "https://zenodo.org/records/7842142",
+    "t": "Strudel: Live Coding Patterns on the Web - Zenodo",
+    "s": "# Strudel: Live Coding Patterns on the Web\n### Authors/Creators\n...\nThis paper introduces Strudel, which faithfully ports the TidalCycles approach to live coding algorithmic patterns to\nnative JavaScript and the web.\nWe begin by giving a little background of the first year of development, before sha"
+   },
+   {
+    "u": "https://strudel.cc/workshop/getting-started/",
+    "t": "Getting Started Strudel",
+    "s": "Welcome to the Strudel documentation pages!\nYou\u2019ve come to the right place if you want to learn how to make music with code.\n...\nIt is an official port of the Tidal Cycles pattern language to JavaScript.\n...\nThis interactive tutorial will guide you through the basics of Strudel.\nThe best place to ac"
+   }
+  ]
+ },
+ {
+  "q": "Sonic Pi tutorial syntax",
+  "ok": true,
+  "hits": [
+   {
+    "u": "https://sonic-pi.net/tutorial.html",
+    "t": "Tutorial - Sonic Pi",
+    "s": "If at any time you wish to stop the sound just hit the\n`Stop` button.\nAlthough don\u2019t hit it just yet\u2026 Instead, follow these steps:\n1. Make sure the bass drum sound is still running\n2. Change the `sleep` value from `0.5` to something higher like `1`.\n3. Press the `Run` button again\n4. Notice how the "
+   },
+   {
+    "u": "https://www.scribd.com/document/896143989/Sonic-Pi-Tutorial",
+    "t": "Sonic Pi Tutorial | PDF | Sound | Computer File",
+    "s": "A live loopLet\u2019s get started, copy the following code into an empty buffer above:live_loop :flibble do sample :bd_haus, rate: 1 sleep 0.5endCopy\nNow, press the Run button and you\u2019ll hear a nice fast bass drum beating away.\nIf at any time youwish to stop the sound just hit the Stop button.\nAlthough d"
+   },
+   {
+    "u": "https://thinking.is.ed.ac.uk/ada-lovelace-day/wp-content/uploads/sites/13/2015/10/Sonic_pi_workshop.pdf",
+    "t": "[PDF] An Introduction to Sonic Pi How to play notes, create loops and ...",
+    "s": "So, to celebrate ALD15, let\u2019s create some music by writing\ncomputer code with Sonic Pi - a live coding environment based on Ruby, originally designed to support both\ncomputing and music lessons in schools, developed by Sam Aaron in the University of Cambridge Computer Lab.\n...\nLet\u2019s start with learn"
+   },
+   {
+    "u": "https://www.cl.cam.ac.uk/projects/raspberrypi/sonicpi/media/sonic-pi-cheatsheet.pdf",
+    "t": "Support Material",
+    "s": "Arguments\nnote\nThe note to play (as a MIDI number)\nArguments\n*args\nAn optional list of arguments to \npass to the current synth.\nDescription\nPlay the current synth at the specified pitch (supplied as a MIDI note).\nOptional arguments may be passed to further control the synth.\nThese \noptional argument"
+   },
+   {
+    "u": "https://moha.wiki/Intro_to_Sonic_Pi_and_Coding_Sound",
+    "t": "Intro to Sonic Pi and Coding Sound",
+    "s": "When you first open it up, there should be a window at the bottom that is full of extensive tutorials and lists of different synths and samples you can code with.\n...\nSonic Pi uses numbers that coordinate to regular music notes and octaves like E flat or middle C.\nFor example, 60 corresponds to midd"
+   },
+   {
+    "u": "https://www.schularena.com/documents/download/1788/Essentials_Sonic_Pi-v1.pdf",
+    "t": "[PDF] YOUR Raspberry Pi - schularena",
+    "s": "The key to live coding with Sonic Pi is mastering the live_loop.\nLet\u2019s look at one:\nlive_loop :beats do\nsample :bd_haus\nsleep 0.5\nend\n...\nyou can change what they do.\n...\nsafety system, the poor computer will try to do this and crash and burn \nin the process.\nSo remember- your live_loops must contai"
+   }
+  ]
+ },
+ {
+  "q": "FoxDot python live coding",
+  "ok": true,
+  "hits": [
+   {
+    "u": "https://foxdot681713046.wordpress.com/",
+    "t": "FoxDot: Live coding with Python \u2013 Make music with Python ...",
+    "s": "This site is the home of the Live Coding environment, **FoxDot**, which was created in 2015 to try and open the pathways to Live Coding for users who may be new to programming and want to use it create music quickly and easily.\n**FoxDot** is an easy-to-use Python library that creates an interactive "
+   },
+   {
+    "u": "https://github.com/Qirky/FoxDot",
+    "t": "GitHub - Qirky/FoxDot: Python driven environment for Live Coding",
+    "s": "# FoxDot - Live Coding with Python v0.8\n## Please note\n...\nFoxDot is a Python programming environment that provides a fast and user-friendly abstraction to SuperCollider.\nIt also comes with its own IDE, which means it can be used straight out of the box; all you need is Python and SuperCollider and "
+   },
+   {
+    "u": "https://id.scribd.com/document/413682473/Foxdot",
+    "t": "Foxdot | PDF - Scribd",
+    "s": "arsr2019 Getting Started - FoxDo Live coding with Python >> FoxDot Live ding with Python and SuperCollider Getting Started Also available in Spanish.\n...\nIf you\u2019re ever stuck, or want to know more about a function or class \u2014 just type help followed by the name of that Python object in brackets: help"
+   },
+   {
+    "u": "https://foxdot681713046.wordpress.com/docs/making-your-first-sounds/",
+    "t": "Making your first sounds \u2013 FoxDot: Live coding with Python",
+    "s": "Congratulations on getting FoxDot installed \u2013 let\u2019s make some sounds!\nFirst you need to open SuperCollider so that we can load up sounds from FoxDot.\nOnce SuperCollider opens, type the following into the editor:\nFoxDot.start\nThis tells SuperCollider to start listening for messages from FoxDot.\nTo ru"
+   },
+   {
+    "u": "https://docutopia.sustrato.red/p/FoxDot?print-pdf",
+    "t": "FoxDot: Haciendo m\u00fasica v\u00eda Live Coding con Python y SuperCollider",
+    "s": "--- breaks: false --- # FoxDot: Haciendo m\u00fasica v\u00eda _Live Coding_ con Python y SuperCollider ![Ventana de FoxDot.](https://imgur.com/Y9EE3NX.png) Seg\u00fan [su sitio web](https://foxdot.org/), FoxDot > fue creado en 2015 para tratar y abrir caminos al [Live Coding](https://en.wikipedia.org/wiki/Live_cod"
+   },
+   {
+    "u": "https://archive.fablabo.net/wiki/Livecoding",
+    "t": "Livecoding",
+    "s": "## FoxDot\n### Installation\n- suivre https://foxdot.org/installation/\n- sudo apt install python-pip\n- pip install FoxDot\nou git clone https://github.com/Qirky/FoxDot.git cd FoxDot python setup.py install\n- sudo apt install supercollider\n- sudo apt install git\n- sudo apt install python-tk\nc'est ok ens"
+   }
+  ]
+ },
+ {
+  "q": "Gibber live coding javascript",
+  "ok": true,
+  "hits": [
+   {
+    "u": "https://gibber.cc/",
+    "t": "gibber",
+    "s": "Gibber is a live coding environment for audiovisual performance.\nThere are lots of amazing live coding systems out there, a few things that make Gibber different include:"
+   },
+   {
+    "u": "https://github.com/gibber-cc/gibber",
+    "t": "Gibber - GitHub",
+    "s": "Gibber is a live coding environment for the web browser, combining music synthesis and sequencing with ray-marching 3d graphics.\n...\nNo installation needed, play it on the web!\n...\n## Start it up\nTo make the playground work locally, you need to run a web server.\nYou can do this using either Visual S"
+   },
+   {
+    "u": "https://github.com/kybr/Gibber",
+    "t": "GitHub - kybr/Gibber: Live coding music environment built on audiolib.js",
+    "s": "Gibber is a live coding environment for the web browser, using the Gibberish audio engine and the CodeMirror code editor.\nIt runs in Chrome, Firefox and nightly builds of Safari.\nBelow is a code sample.\nTo test out Gibber, visit http://www.charlie-roberts.com/gibber\n```\n...\nLive coding music environ"
+   },
+   {
+    "u": "https://iclc.toplap.org/2015/meta/104_def_Gribber__Grace__Gibber.pdf",
+    "t": "def Gribber = (Grace + Gibber)",
+    "s": "One of the Grace implementa-\ntions, Hopper, is an interpreter that runs on top of JavaScript.\nGibber is series of libraries that support real-time audio\nprocessing, and also a simple livecoding interactive development environment, also on top of JavaScript.\nIn this demon-\nstration, we will present G"
+   },
+   {
+    "u": "https://github.com/bashbash/Gibber",
+    "t": "GitHub - bashbash/Gibber: An audiovisual live coding environment for the browser",
+    "s": "Gibber is a live coding environment for the web browser, using the Gibberish.js audio engine, the CodeMirror code editor library and wrapping Three.js for 3d graphics and shader support.\nVersion 2 of Gibber features a much more efficient audio engine, some interesting mapping abstractions and a serv"
+   },
+   {
+    "u": "https://github.com/gibber-cc/gibberwocky.midi",
+    "t": "GitHub - gibber-cc/gibberwocky.midi: live coding / algorithmic composition environment using JavaScript with MIDI output.",
+    "s": "This repo is for a plugin to live code MIDI messages for targeting synths and/or digital audio workstations.\nIt is fork of Gibberwocky, a live-coding environment for Ableton Live, which in turn is based on Gibber, a live-coding environment for the browser that targets the WebAudio API.\n## Live Envir"
+   }
+  ]
+ },
+ {
+  "q": "Mercury live coding language",
+  "ok": true,
+  "hits": [
+   {
+    "u": "https://github.com/tmhglnd/mercury",
+    "t": "Mercury live coding environment - GitHub",
+    "s": "**Mercury is a free/open-source, beginner-friendly, minimal and human-readable language for the live coding of algorithmic electronic music performances**\nMercury currently has 2 versions:\n- Original version running in Max8 (Windows/Mac only) (you're in the right place)\n- Web version running in the "
+   },
+   {
+    "u": "https://tmhglnd.github.io/mercury/docs/",
+    "t": "Mercury Live Coding Environment - tmhglnd",
+    "s": "**Mercury is a free/open-source, beginner-friendly, minimal and human-readable language for the live coding of algorithmic electronic music performances**\n...\n**\ud83d\ude80 Start coding directly at mercury-playground.cc!**"
+   },
+   {
+    "u": "https://iclc.toplap.org/2019/papers/paper67.pdf",
+    "t": "[PDF] Mercury: a live coding environment focussed on quick expression for ...",
+    "s": "ABSTRACT\nIn this paper the livecoding environment Mercury is introduced.\nAn interpreted language that is designed with the focus on\nquick and hands-on composing, performing and communicating of live-coded music and sound.\nMercury provides the\nperformer with a highly abstracted programming language f"
+   },
+   {
+    "u": "https://en.wikipedia.org/wiki/Mercury_(programming_language)",
+    "t": "Mercury (programming language) - Wikipedia",
+    "s": "**Mercury** is a functional logic programming language made for real-world uses.\nThe first version was developed at the University of Melbourne, Computer Science department, by Fergus Henderson, Thomas Conway, and Zoltan Somogyi, under Somogyi's supervision, and released on April 8, 1995.\nMercury is"
+   },
+   {
+    "u": "https://cycling74.com/projects/mercury-live-coding-environment",
+    "t": "Project: Mercury - Live Coding Environment | Cycling '74",
+    "s": "# Mercury - Live Coding Environment\nThis is Mercury.\nA language that is designed with the focus on quick and hands-on composing, performing and communicating of live-coded music and sound.\nMercury provides the performer with a highly abstracted programming language.\nComplementing the sound with visu"
+   },
+   {
+    "u": "https://github.com/tmhglnd/mercury-examples",
+    "t": "GitHub - tmhglnd/mercury-examples: A package with examples and tutorials for the Mercury live coding language",
+    "s": "This is a package with examples and tutorials for the Mercury live coding language that can be included via npm to easily access the files from a json file.\nThis Package does not generate any sound or visuals.\nThis is used in the Mercury environment and the Mercury-Playground, the browser based vers"
+   }
+  ]
+ },
+ {
+  "q": "Alda music programming language syntax",
+  "ok": true,
+  "hits": [
+   {
+    "u": "https://slides.com/daveyarwood/alda",
+    "t": "Alda: A Music Programming Language, Built in Clojure - Slides",
+    "s": "A Music Programming Language\nBuilt With Clojure\n...\nJava client\nServer\nParser\nREPL\nSound Engine\nClojure DSL\n...\n## Data Representation of a Note\n...\n{:offset 1000.0, :instrument \"piano-ERbWJ\", :volume 1.0,\n:track-volume 0.7874015748031497, :panning 0.5, :midi-note 64,\n:pitch 329.6275569128699, :dura"
+   },
+   {
+    "u": "https://github.com/alda-lang/alda",
+    "t": "alda-lang/alda: A music programming language for musicians. :notes",
+    "s": "Alda is a text-based programming language for music composition.\nIt allows you\nto compose and play back music using only your text editor and the command line.\n```\npiano:\no3\ng8 a b > c d e f+ g | a b > c d e f+ g4\ng8 f+ e d c < b a g | f+ e d c < b a g4\n<< g1/>g/>g/b/>d/g\n```\nFor more examples, see "
+   },
+   {
+    "u": "https://functional-art.org/2016/alda.html",
+    "t": "Demo: Alda: A text-based music composition language",
+    "s": "Alda is a music programming language that offers a way to describe a musical composition in the form of a text document.\nThe language has an easy-to-use syntax that is well-suited for both musicians with little-to-no programming knowledge and programmers with little-to-no music theory knowledge.\nAld"
+   },
+   {
+    "u": "https://alda.io/tutorial/",
+    "t": "Tutorial - alda.io",
+    "s": "*Before we get started, go ahead and install Alda, if you haven\u2019t already!*\nWe will use the Alda REPL (**R** ead-**E** valuate-**P** lay **L** oop) at first, to experiment a little with Alda syntax.\nTo start the REPL, type:\n```\nalda repl\n```\nYou can type snippets of Alda code into the REPL, press En"
+   },
+   {
+    "u": "https://github.com/alda-lang/alda/blob/master/README.md",
+    "t": "alda/README.md at master \u00b7 alda-lang/alda",
+    "s": "Alda is a text-based programming language for music composition.\nIt allows you\nto compose and play back music using only your text editor and the command line.\n```\npiano:\no3\ng8 a b > c d e f+ g | a b > c d e f+ g4\ng8 f+ e d c < b a g | f+ e d c < b a g4\n<< g1/>g/>g/b/>d/g\n```\nFor more examples, see "
+   },
+   {
+    "u": "https://alda.readthedocs.io/en/latest/notes/",
+    "t": "Notes",
+    "s": "Alda's syntax for\n**notes** is heavily inspired by MML.\n...\nWestern music theory divides pitches into repeating groups of 12 notes, e.g. (ascending)\n`c c# d d# e f f# g g# a a# b (next octave) c c# d`, etc.\nThe combination of the letter pitch (e.g. C#) and the octave determines the frequency of the "
+   }
+  ]
+ },
+ {
+  "q": "Ziffers numeric notation live coding",
+  "ok": true,
+  "hits": [
+   {
+    "u": "https://github.com/amiika/ziffers",
+    "t": "amiika/ziffers: Numbered musical notation for composing ...",
+    "s": "# Ziffers: Numeric notation for composing algorithmic and generative music using Sonic Pi\nZiffers is a generative numbered musical notation (aka.\nZiffersystem) and a live code golfing framework that makes composing melodies and rhythms easier and faster in Sonic Pi.\nWriting and playing melodies in a"
+   },
+   {
+    "u": "https://www.academia.edu/109553954/Ziffers_Numbered_Musical_Notation_for_Live_Coding_and_Algorithmic_Composition",
+    "t": "Ziffers - Numbered Musical Notation for Live Coding and ...",
+    "s": "Ziffers is an algorithmic number based musical notation for live coding.\nIt offers concise syntax to support composition and improvisation with complex melodies and rhythms.\nZiffers is the result of experiments in unifying several types of musical notation centred around the use of symbols and numbe"
+   },
+   {
+    "u": "https://www.academia.edu/166157921/Extending_music_notation_through_programming",
+    "t": "Extending music notation through programming",
+    "s": "Ziffers is an algorithmic number based musical notation for live coding.\nIt offers concise syntax to support composition and improvisation with complex melodies and rhythms.\nZiffers is the result of experiments in unifying several types of musical notation centred around the use of symbols and numbe"
+   },
+   {
+    "u": "https://www.academia.edu/12920001/Scoring_with_Code_Composing_with_Algorithmic_Notation",
+    "t": "Scoring with Code: Composing with Algorithmic Notation",
+    "s": "Ziffers is an algorithmic number based musical notation for live coding.\nIt offers concise syntax to support composition and improvisation with complex melodies and rhythms.\nZiffers is the result of experiments in unifying several types of musical notation centred around the use of symbols and numbe"
+   },
+   {
+    "u": "https://in-thread.sonic-pi.net/t/ziffers-numbered-musical-notation/1557",
+    "t": "Ziffers - Numbered musical notation - Creations & Ideas - in_thread",
+    "s": "I wanted to share my new project called \u201cZiffers\u201d: https://github.com/amiika/ziffers\nIt is a new notation and parser for Sonic Pi that can be used to write, parse and play compact melodies.\nIts inspired by numbered musical notation.\nBasic syntax is composed of degree numbers 1 - 7 and lower letters "
+   },
+   {
+    "u": "https://in-thread.sonic-pi.net/t/ziffers-numbered-musical-notation/1557?page=3",
+    "t": "Ziffers - Numbered musical notation",
+    "s": "I added the harmonization transformation.\nIt works like this:\n```\nzplay \"1 3 2 5\", harmonize: 3\nzplay \"-3 -2 -1 0 1 2 3\", harmonize: [3,5]\nzplay \"1 3 2 4\", harmonize: [2,\"#5\",\"b4\"]\nzplay \"1 3 2 4\", harmonize: {1=>3,4=>5}\nzplay \"1 3 2 4\", harmonize: {1=>[3,5],4=>[2,3,4]}\nzplay \"G'e1 2 3' 9 8 7 6 5 4 "
+   }
+  ]
+ },
+ {
+  "q": "Orca esoteric programming sequencer",
+  "ok": true,
+  "hits": [
+   {
+    "u": "https://github.com/hundredrabbits/Orca",
+    "t": "hundredrabbits/Orca: Esoteric Programming Language - GitHub",
+    "s": "Orca is an esoteric programming language designed to quickly create procedural sequencers, in which every letter of the alphabet is an operation, where lowercase letters operate on bang, uppercase letters operate each frame.\nThis application **is not a synthesizer, but a livecoding environment** cap"
+   },
+   {
+    "u": "https://hundredrabbits.itch.io/orca",
+    "t": "Orca by Rek & Devine - itch.io",
+    "s": "A downloadable tool for Windows, macOS, Linux, and Android\nOrca is an **esoteric programming language**, designed to create procedural sequencers in which each letter of the alphabet is an operation, where lowercase letters operate on bang, uppercase letters operate each frame.\nThe application **is "
+   },
+   {
+    "u": "https://deepwiki.com/hundredrabbits/Orca/1-overview",
+    "t": "hundredrabbits/Orca | DeepWiki",
+    "s": "Orca is an esoteric programming language designed to create procedural sequencers.\nIt is implemented as a livecoding environment where every letter of the alphabet represents an operation.\nLowercase letters operate on bang, while uppercase letters operate each frame.\nThe system is not a synthesizer "
+   },
+   {
+    "u": "https://inventingsituations.net/2021/12/26/procedural-music-in-orca/",
+    "t": "Procedural Music in Orca - Inventing Situations.",
+    "s": "I recently stumbled on the Orca sequencer, developed by Hundred Rabbits.\nIt bills itself as an \u2018esoteric programming language\u2019 for writing music.\nIt is purely a sequencer, and has good integration for MIDI and other output types which I haven\u2019t explored\u2026 There are some pretty good tutorials out ther"
+   },
+   {
+    "u": "https://clintjohnson.cloud/patchbay/tools/orca/",
+    "t": "Orca \u2014 JavaScript \u00b7 Live coding | The Patchbay",
+    "s": "Esoteric live-coding sequencer where each letter is an operation; sends MIDI, OSC and UDP.\n|Language|JavaScript|\n...\n|Category|Live coding|\n|License|MIT|\n|Platforms|macOS Windows Linux Web|\n|Install|``` Download from hundredrabbits.itch.io/orca, or clone the repo and run npm install && npm start in "
+   },
+   {
+    "u": "https://www.matrixsynth.com/search/label/ORCA",
+    "t": "MATRIXSYNTH",
+    "s": "\"In today's stream we will be using the esoteric livecoding environment ORCA to sequence the Elektron Syntakt.\n...\nBuy ORCA here: https://hundredrabbits.itch.io/orca\n...\nFind more on ORCA here:\n\u25bahttps://github.com/hundredrabbits/Orca\nBuy ORCA here:\n\u25bahttps://hundredrabbits.itch.io/orca\n...\nFrom Hundr"
+   }
+  ]
+ },
+ {
+  "q": "Glicol graph oriented live coding language",
+  "ok": true,
+  "hits": [
+   {
+    "u": "https://github.com/chaosprint/glicol",
+    "t": "GitHub - chaosprint/glicol: Graph-oriented live coding language and music/audio DSP library written in Rust",
+    "s": "Glicol (an acronym for \"graph-oriented live coding language\") is a computer music language with both its language and audio engine written in Rust programming language, a modern alternative to C/C++.\nGiven this low-level nature, Glicol can run on many different platforms such as browsers, VST plugin"
+   },
+   {
+    "u": "https://blog.livecoding.nyuadim.com/wp-content/uploads/Salem_AlShamsi_Glicol_LiveCoding_Presentation.pdf",
+    "t": "[PDF] GLICOL - Live Coding Blog - Interactive Media",
+    "s": "Graph Oriented Live Coding Language\nMaking Music with Code in Your Browser\nInteractive Media Research Presentation\nWhat Is Glicol?\nA music language\nType short commands and Glicol turns them into sound instantly.\nBrowser based\nOpen glicol.org in any modern browser.\nNothing to download or install.\nGra"
+   },
+   {
+    "u": "https://webaudioconf.com/posts/2021_8/",
+    "t": "Glicol: A Graph-oriented Live Coding Language Developed ... - WAC",
+    "s": "# Glicol: A Graph-oriented Live Coding Language Developed with Rust, WebAssembly and AudioWorklet\nThis paper introduces the new music live coding language Glicol (graph-oriented live coding language) and its web-based run-time environment.\nAs the name suggests, this language is designed to represent"
+   },
+   {
+    "u": "https://github.com/chaosprint/glicol/blob/main/README.md",
+    "t": "glicol/README.md at main \u00b7 chaosprint/glicol",
+    "s": "Glicol (an acronym for \"graph-oriented live coding language\") is a computer music language with both its language and audio engine written in Rust programming language , a modern alternative to C/C++.\nGiven this low-level nature, Glicol can run on many different platforms such as browsers, VST plugi"
+   },
+   {
+    "u": "https://news.ycombinator.com/item?id=30942074",
+    "t": "Show HN: Glicol - A Graph-Oriented Live Coding Language/DSP Lib Written in Rust",
+    "s": "https://glicol.org\nRecently I added support for VST, Bela and responsive design for mobile devices.\n...\nhttps://github.com/chaosprint/glicol"
+   },
+   {
+    "u": "https://github.com/glicol",
+    "t": "Glicol",
+    "s": "Glicol is a music programming language written in Rust.\n...\nGlicol (an acronym for \"graph-oriented live coding language\") is a computer music language with both its language and audio engine written in Rust programming language, a modern alternative to C/C++.\n...\nhttps://github.com/chaosprint/glicol"
+   }
+  ]
+ },
+ {
+  "q": "LilyPond notation syntax tutorial",
+  "ok": true,
+  "hits": [
+   {
+    "u": "http://lilypond.org/doc/v2.23/Documentation/notation/",
+    "t": "LilyPond \u2014 Notation Reference",
+    "s": "This manual provides a reference for all notation that can be\nproduced with LilyPond version 2.23.82.\nIt assumes that\nthe reader is familiar with the material in the\nLearning Manual.\n|1.\nMusical notation| |Notation which is used in almost all projects.|\n...\n|2.\nSpecialist notation| |Notation which i"
+   },
+   {
+    "u": "https://lilypond.org/doc/v2.24/Documentation/notation.pdf",
+    "t": "[PDF] Notation (PDF) - LilyPond",
+    "s": "As explained above, the octave of pitches is calculated only with the note names, regardless\nof any alterations.\n...\nNormally accidentals are printed automatically, but you may also print them manually.\nA\nreminder accidental can be forced by adding an exclamation mark ! after the pitch.\nA cautionary"
+   },
+   {
+    "u": "https://lilypond.org/doc/v2.24/Documentation/notation-big-page.html",
+    "t": "LilyPond Notation Reference",
+    "s": "To check the octave of a note, specify the absolute octave after\nthe `=`\u00a0symbol.\nThis example will generate a warning\n(and change the pitch) because the second note is the absolute\noctave `d''` instead of `d'` as indicated by the octave\n...\nThe pitch to use for `\\transposition` should correspond to\n"
+   },
+   {
+    "u": "https://lilypond.org/doc/v2.25/Documentation/notation.pdf",
+    "t": "Notation Reference",
+    "s": "reminder accidental can be forced by adding an exclamation mark ! after the pitch. A cautionary\naccidental (i.e., an accidental within parentheses) can be obtained by adding the question mark ?\nafter the pitch.\n...\nAccidentals on tied notes are only printed at the beginning of a new system:\n...\nTo c"
+   },
+   {
+    "u": "https://lilypond.org/doc/v2.25/Documentation/notation-big-page.html",
+    "t": "Notation Reference",
+    "s": "Other octaves may be specified with a single quote\u00a0(`'`)\nor comma\u00a0(`,`) character.\nEach\u00a0`'` raises the\npitch by one octave; each\u00a0`,` lowers the pitch by an\noctave.\n...\n- **an octave of the first note inside**\nWriting `\\relative gis''' { gis \u2026 }` makes it easy to determine the absolute pitch of the f"
+   },
+   {
+    "u": "https://lilypond.org/doc/v2.23/Documentation/notation-big-page",
+    "t": "LilyPond Notation Reference",
+    "s": "A natural pitch is entered as a simple note name; no suffix is required. A natural sign will be printed when needed to cancel the effect of an earlier accidental or key signature.\n...\nAccidentals on tied notes are only printed at the beginning of a new system:\n...\nTo check the octave of a note, spec"
+   }
+  ]
+ },
+ {
+  "q": "ABC notation standard 2.1",
+  "ok": true,
+  "hits": [
+   {
+    "u": "https://abcnotation.com/wiki/abc:standard:v2.1",
+    "t": "abc:standard:v2.1 [abc wiki]",
+    "s": "- The abc music standard 2.1 (Dec 2011)\n...\nAbc is a text-based music notation system designed to be comprehensible by both people and computers.\nMusic notated in abc is written using characters - letter, digits and punctuation marks - on paper or in computer files.\nThis description of abc has been "
+   },
+   {
+    "u": "https://abcnotation.com/wiki/abc:standard",
+    "t": "abc:standard [abc wiki]",
+    "s": "The current version of the standard is at:\n- ** abcnotation.com/wiki/abc:standard:v2.1 - abc standard 2.1 (Dec 2011) **\n#### Development work"
+   },
+   {
+    "u": "https://de.wikipedia.org/wiki/ABC_(Musiknotation)",
+    "t": "ABC (Musiknotation) \u2013 Wikipedia",
+    "s": "**ABC** bzw.\n**ABC-Notation** (engl. *abc notation*) ist ein nichtkommerzieller, offener Standard zur Notation von Musik in Textform (ASCII).\nEr dient als Eingabe- und Auszeichnungssprache in Musiksoftware sowie als Speicherformat f\u00fcr Notendateien.\n...\nAm 21. Dezember 2011 wurde die offizielle Versi"
+   },
+   {
+    "u": "https://www.scribd.com/document/786847159/abc-standard-v2-1",
+    "t": "Abc Music Standard 2.1 Overview | PDF | Computer File | Html - Scribd",
+    "s": "# The abc music standard 2.\n1 (Dec 2011)Chris Walshaw For information on Abc2MIDI click here:[Link]/contact [[Link][Link] [[Link] [Link]\nBack to top\n1. IntroductionAbc is a text-based music notation system designed to be comprehensible by both people and computers.\nMusic notated inabc is written usi"
+   },
+   {
+    "u": "https://chromatone.center/theory/notes/computer/abc/",
+    "t": "ABC notation",
+    "s": "ABC notation is a shorthand form of musical notation for computers.\nIn basic form it uses the letter notation with a\u2013g, A\u2013G, and z, to represent the corresponding notes and rests, with other elements used to place added value on these \u2013 sharp, flat, raised or lowered octave, the note length, key, an"
+   },
+   {
+    "u": "http://justsolve.archiveteam.org/wiki/ABC_(musical_notation)",
+    "t": "ABC (musical notation) - Just Solve the File Format Problem",
+    "s": "The **ABC notation** is a text-based (ASCII) musical notation format commonly used for folk and traditional music.\nIt is an alphabetical shorthand, using the letters A to G to represent notes and other numbers and symbols to represent note length, sharps, flats, ornaments, etc.\n...\nThe current stand"
+   }
+  ]
+ },
+ {
+  "q": "MusicXML specification",
+  "ok": true,
+  "hits": [
+   {
+    "u": "https://www.w3.org/2021/06/musicxml40/",
+    "t": "MusicXML 4.0",
+    "s": "## Version 4.0\n## Final Community Group Report 1 June 2021\n**Latest editor's draft:**\n- https://w3c.github.io/musicxml/\n...\n- Michael Good, MakeMusic\n...\nCopyright \u00a9 2004-2021 the Contributors to the MusicXML Specification, published by the Music Notation Community Group under the W3C Community Fina"
+   },
+   {
+    "u": "https://en.wikipedia.org/wiki/MusicXML",
+    "t": "MusicXML",
+    "s": "**MusicXML** is an XML-based file format for representing Western musical notation.\nThe format is open, fully documented, and can be freely used under the W3C Community Final Specification Agreement.\n...\nMusicXML was invented by Michael Good and initially developed by Recordare LLC.\n...\nIt is design"
+   },
+   {
+    "u": "https://www.w3.org/2017/12/musicxml31/",
+    "t": "MusicXML - W3C",
+    "s": "Copyright \u00a9 2004-2017 the Contributors to the MusicXML Specification, published by the Music Notation Community Group under the W3C Community Final Specification Agreement (FSA).\n...\nMusicXML is a standard open format for exchanging digital sheet music.\nIt is designed for\nsharing sheet music files b"
+   },
+   {
+    "u": "https://github.com/w3c/musicxml",
+    "t": "GitHub - w3c/musicxml: MusicXML specification",
+    "s": "This repository is maintained by the W3C Music Notation Community Group and holds the latest release of the MusicXML specification.\nPlease consult that page for further details.\nThe group is chaired by Michael Asato Cuthbert (MusicXML Spec Editor), Adrian Holovaty, and Daniel Spreadbury.\n...\nMusicXM"
+   },
+   {
+    "u": "https://www.musicxml.com/for-developers/",
+    "t": "MusicXML 4.0",
+    "s": "Version 4.0 of the MusicXML format was released in June 2021.\nVersion 4.0 was developed by the W3C Music Notation Community Group and published as a W3C Community Group Final Report.\nIt is licensed under the W3C Community Final Specification Agreement (FSA).\n...\nMusicXML 4.0 is compatible with earli"
+   },
+   {
+    "u": "https://www.w3.org/2021/06/musicxml40/listings/musicxml.xsd/",
+    "t": "musicxml.xsd",
+    "s": ""
+   }
+  ]
+ },
+ {
+  "q": "GUIDO music notation format",
+  "ok": true,
+  "hits": [
+   {
+    "u": "https://guidodoc.grame.fr/",
+    "t": "Guido Music Notation",
+    "s": "The GUIDO Music Notation Format (GMN) is a general purpose formal language for representing score level\nmusic in a platform independent, plain-text and human-readable way.\nIt is based on a conceptually\nsimple but powerful formalism: its design concentrates on general musical concepts (as opposed to\n"
+   },
+   {
+    "u": "https://www.cs.ubc.ca/~hoos/Publ/icmc99.pdf",
+    "t": "advguido.dvi",
+    "s": "Abstract\nGUIDO Music Notation is a new music representation\nformat based on the notion of representational adequa-\ncy, i.e., it represents simple musical concepts in sim-\nple ways, and requires complex representations only\nfor complex scores.\nThis paper shows how Advanced\nGUIDO Music Notation, the s"
+   },
+   {
+    "u": "https://guido.grame.fr/papers/leroi-decron14.pdf",
+    "t": "[PDF] EXTENSION DE GUIDO AUX NOTATIONS CONTEMPORAINES",
+    "s": "Le projet GUIDO regroupe \u00e0 la fois un format textuel\nde description de partitions musicales, un moteur de rendu\nbas\u00e9 sur ce format, et une librairie qui fournit aux d\u00e9velop-\npeurs d\u2019applications un support de haut niveau pour l\u2019en-\nsemble des services li\u00e9s au format GUIDO et \u00e0 son rendu\nsous forme g"
+   },
+   {
+    "u": "https://guido.grame.fr/papers/lac2009.pdf",
+    "t": "The Guido Engine",
+    "s": "The Guido Music Notation format (GMN) is a gen-\neral purpose formal language for representing score\nlevel music in a platform independent plain text and\nhuman readable way.\nBased on this music repre-\nsentation format, the GuidoLib provides a generic,\nportable library and API for the graphical render"
+   },
+   {
+    "u": "https://wiki.ccarh.org/wiki/Guido_Music_Notation",
+    "t": "Guido Music Notation",
+    "s": "Guido Music Notation (GMN) is an ASCII-text based representation for music that can be converted into graphical music notation using various programs and processing architectures.\nThe website noteserver.org provides an easy online method of generating graphical music from GMN.\nThe Guido Engine Libra"
+   },
+   {
+    "u": "https://github.com/grame-cncm/guidolib/blob/dev/doc/html/GUIDO-Music-Notation-Format.html",
+    "t": "guidolib/doc/html/GUIDO-Music-Notation-Format.html at dev \u00b7 grame-cncm/guidolib",
+    "s": "<h2> Version 1.0 <br />\n...\n<H2>1 Introduction</H2>\nThe GUIDO Notation Format is a general purpose formal\nlanguage for representing score level music\nin a platform independent, plain-text and human-readable\nway.\nIt is based on a conceptually simple but\npowerful formalism; its design concentrates on "
+   }
+  ]
+ },
+ {
+  "q": "Bol Processor grammar music",
+  "ok": true,
+  "hits": [
+   {
+    "u": "https://bolprocessor.org/",
+    "t": "The Bol Processor project - Bol Processor",
+    "s": "The **Bol Processor** generates music according to a set of rules (a compositional grammar) and/or text scores that can be entered manually, captured from a MIDI instrument or imported from MusicXML scores.\nThese rule sets are analogous to *formal grammars* (\n...\nGRAM#14[12] Do --> Tik\n...\nSUB1*// T"
+   },
+   {
+    "u": "https://bolprocessor.org/modelling-music-with-grammars/",
+    "t": "Modelling music with grammars - Bol Processor",
+    "s": "**Modelling music with grammars: formal language representation in the Bol Processor**.\n...\nA linguistic model of tabla improvisation and evaluation derived from pattern languages and formal grammars has been implemented in the Bol Processor, a software system used in interactive fieldwork with expe"
+   },
+   {
+    "u": "https://bolprocessor.org/bol-processor-grammars/",
+    "t": "Bol Processor grammars",
+    "s": "In Mira Balaban, Otto Laske et Kemal Ebcioglu (eds.)\nUnderstanding Music with AI, American Association for Artificial Intelligence Press, Menlo Park CA (1992): 366-400.\n...\nBol Processor grammars are an extension of unrestricted generative grammars allowing a simple representation of string \"pattern"
+   },
+   {
+    "u": "https://bolprocessor.org/bp1-in-real-musical-context/",
+    "t": "BP1 in its real musical context - Bol Processor",
+    "s": "\u2026 We will now show its operation in a real musical context: the modelling of a 'theme-and-variations' piece of drumming (called *q\u2018aida*) taught by Ustad Afaq Husain Khan, an expert in the Lucknow style of *tabla* in India.\n...\nSince both strict and approximate periodicity are essential features of "
+   },
+   {
+    "u": "https://www.academia.edu/112258753/Migrating_Musical_Concepts_An_Overview_of_the_Bol_Processor",
+    "t": "Migrating Musical Concepts: An Overview of the Bol Processor",
+    "s": "This paper provides an overview of the Bol Processor, a software tool designed to assist musicians in compositional processes.\nIt discusses the system's evolution from initial word processing capabilities tailored for rhythmic data to advanced modeling of musical improvisation and composition tasks."
+   },
+   {
+    "u": "https://bolprocessor.sourceforge.io/",
+    "t": "Bol Processor on Sourceforge",
+    "s": "Bol Processor 2 (BP2) is a program by Bernard Bel for music composition and improvisation with real-time MIDI, MIDI file, Csound, and text output options.\nBP2 produces music with a set of rules (a compositional grammar) or from text scores that can be typed in or captured from a MIDI instrument.\nThe"
+   }
+  ]
+ },
+ {
+  "q": "SuperCollider patterns Pbind tutorial",
+  "ok": true,
+  "hits": [
+   {
+    "u": "https://composerprogrammer.com/teaching/supercollider/sctutorial/9.2%20Patterns.html",
+    "t": "Patterns",
+    "s": "Patterns provide a facility for easily exploring generative music/algorithmic composition.\nRather than making single synthesis events, we're looking much more at how we schedule lots of events over time.\nWe'll work backwards!\nWe'll start with what seems magical then explain some of how it works.\nTo "
+   },
+   {
+    "u": "https://depts.washington.edu/dxscdoc/Help/Tutorials/A-Practical-Guide/PG_03_What_Is_Pbind.html",
+    "t": "Pattern Guide 03: What Is Pbind | SuperCollider 3.13.0 Help",
+    "s": "In the most general sense, Pbind is just a way to give names to values coming out of the types of patterns we just saw.\nWhen you ask a Pbind stream for its next value, the result is an object called an Event.\nLike a Dictionary (which is a superclass of Event), an event is a set of \"key-value pairs\":"
+   },
+   {
+    "u": "https://ccrma.stanford.edu/~ruviaro/texts/A_Gentle_Introduction_To_SuperCollider.pdf",
+    "t": "A Gentle Introduction to SuperCollider",
+    "s": "Part II\n...\nLet\u2019s try something different now. Type and run this line of code:\n1\nPbind(\\degree, Pseries(0, 1, 30), \\dur, 0.05).play;\n13.1\nMeet Pbind\nPbind is a member of the Pattern family in SuperCollider. The capital P in Pbind and Pseries\nstands for Pattern; we\u2019ll meet other members of the family"
+   },
+   {
+    "u": "https://www.scribd.com/document/420076742/Tutorial-14patterns-rtf",
+    "t": "Tutorial 14patterns.rtf",
+    "s": "Tutorial 14 Patterns, and An Introduction To Algorithmic Composition Pbind, Pseq, Etc\nThe document provides an introduction to algorithmic composition in SuperCollider using patterns and Pbind.\nIt explains that Pbind links parameters of musical events to values from patterns or functions, allowing p"
+   },
+   {
+    "u": "https://github.com/supercollider/supercollider/blob/main/HelpSource/Classes/Pbind.schelp",
+    "t": "supercollider/HelpSource/Classes/Pbind.schelp at main \u00b7 supercollider/supercollider",
+    "s": "doc: clarify syntactic shortcuts in Pbind documentation\nFeb 21, 2021"
+   },
+   {
+    "u": "https://docs.supercollider.online/Tutorials/A-Practical-Guide/PG_06c_Composition_of_Patterns.html",
+    "t": "Pattern Guide 06c: Composition of Patterns - SuperCollider",
+    "s": "One way to use patterns is to write everything into the pattern up front.\nThis has the advantage of clarity and ease of understanding.\nAnother way is to modularize the behavior by creating smaller, simpler patterns and combining their results into single events that have keys and values from all the"
+   }
+  ]
+ },
+ {
+  "q": "Csound score f-table statements",
+  "ok": true,
+  "hits": [
+   {
+    "u": "https://csound.com/manual/scoregens/f/",
+    "t": "f Statement (or Function Table Statement) - Csound",
+    "s": "# f Statement (or Function Table Statement)\nCauses a GEN subroutine to place values in a stored function table for use by instruments.\n## Syntax\n```\nf p1 p2 p3 p4 p5 ...\nPMAX\n```\n...\n*p1* -- Table number by which the stored function will be known.\nA negative number requests that the table be destroy"
+   },
+   {
+    "u": "https://eumus.edu.uy/eme/ensenanza/electivas/csound/materiales/book_chapters/02nelson/02nelson.html",
+    "t": "Understanding and Using Csound's GEN Routines",
+    "s": "Csound utilizes lookup tables for musical applications as diverse as wavetable synthesis, waveshaping, mapping MIDI note numbers and storing ordered pitch class sets.\nThese function tables (f-tables) contain everything from periodic waveforms to arbitrary polynomials and randomly generated values.\nT"
+   },
+   {
+    "u": "https://csound.com/docs/manual/f.html",
+    "t": "f Statement (or Function Table Statement) - Csound",
+    "s": "f Statement (or Function Table Statement) \u2014 Causes a GEN subroutine to place values in a stored function table.\nThis causes a GEN subroutine to place values in a stored function table for use by instruments.\n*p1* -- Table number by which the stored function will be known.\nA negative number requests "
+   },
+   {
+    "u": "https://csound.com/manual/reference/scoreStatementsRef/",
+    "t": "Score Statements - Csound 7 Manual",
+    "s": "# Score Statements\na - Advance score time by a specified amount.\nb - Resets the clock.\nB - Accumulate clock adjustment.\nC - Toggles carry facility.\nd - Deletes an infinite instrument.\ne - Marks the end of the last section of the score.\nf - Causes a GEN subroutine to place values in a stored function"
+   },
+   {
+    "u": "https://new.math.uiuc.edu/audible/csound/score.htm",
+    "t": "The illiMath Csound Primer",
+    "s": "Here is a complete score file with which you can play the orchestra you\nbuilt in the previous section.\nIt creates a function table\n`f1`\nof sound samples which the instrument `i1` produces for 4 seconds.\nf1 0 4096 10 1 0 .333 0 .2 i1 0 4 e ; marks the end of the score file\n* Understanding function ta"
+   },
+   {
+    "u": "http://www.csounds.com/manualOLPC/ftgen.html",
+    "t": "ftgen",
+    "s": "ftgen \u2014 Generate a score function table from within the orchestra.\n*gir* -- either a requested or automatically assigned table number above 100.\n*ifn* -- requested table number If *ifn* is zero, the number is assigned automatically and the value placed in *gir*.\nAny other value is used as the table "
+   }
+  ]
+ }
+]

@@ -1,0 +1,78 @@
+# examples/gesture_algebra.fil — gestures as first-class values (SPEC 8).
+# Each stave adds one operator of the algebra to the same held note, so you can
+# hear what `+`, `*`, `>>`, `|` and `@` actually do.
+#
+#   filigree render examples/gesture_algebra.fil -o gesture_algebra.mid
+
+@title "Gesture algebra"
+@tempo 72
+@key E minor
+@grid 8ms
+@seed 2
+
+# --- the vocabulary -------------------------------------------------------
+gesture cry   = bend(0 -> -0.7st -> 0, shape: ease)
+gesture warm  = press(0.2 -> 0.9, shape: exp) | timbre(0.4 -> 0.7)
+gesture vibr(rate: 5.2hz, depth: 0.3st, onset: 30%) =
+          bend(wiggle(rate, depth) @ onset..100%)
+gesture air   = timbre(drift(0.15, 0.6hz)) | press(const(0.35))
+gesture chug  = press(pulse(4hz, 0.35))
+
+# --- the algebra ----------------------------------------------------------
+gesture cry_wide  = cry * 1.6                 # scale amplitude
+gesture cry_then  = cry >> vibr(rate: 6hz)    # sequence: first half, second half
+gesture cry_late  = cry >>(30%) vibr          # sequence, split at 30%
+gesture both      = cry + vibr(depth: 0.15st) # sum, per lane
+gesture layered   = cry | warm                # parallel, different lanes
+gesture tail      = vibr @ 60%..100%          # restrict to a window
+gesture inverted  = -cry                      # invert
+gesture gated     = warm * chug               # multiply / AM, per lane
+
+stave a_plain {
+  notes | E3!cry - - - |
+}
+stave b_scaled {
+  after a_plain
+  notes | E3!cry_wide - - - |
+}
+stave c_sequenced {
+  after b_scaled
+  notes | E3!cry_then - - - |
+}
+stave d_split {
+  after c_sequenced
+  notes | E3!cry_late - - - |
+}
+stave e_summed {
+  after d_split
+  notes | E3!both - - - |
+}
+stave f_parallel {
+  after e_summed
+  notes | E3!layered - - - |
+}
+stave g_windowed {
+  after f_parallel
+  notes | E3!tail - - - |
+}
+stave h_inverted {
+  after g_windowed
+  notes | E3!inverted - - - |
+}
+stave i_am {
+  after h_inverted
+  notes | E3!gated - - - |
+}
+stave j_drift {
+  after i_am
+  notes | E3!air - - - |
+}
+
+# Inline gesture calls inside a curve lane occupy one slot each, and explicit
+# glyphs on the same lane always win over an attached gesture (SPEC 8).
+stave k_inline {
+  after j_drift
+  notes!gesture=warm | 0 - - - | 0 - - - |
+  bend!range=3st     | __vibr(depth: 0.5st)_ | cry()^^curve("_v^_") |
+  press              | ____^^^^ |          |
+}

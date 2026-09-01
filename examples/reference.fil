@@ -1,0 +1,61 @@
+# examples/reference.fil — a playable tour of the note tokens and curve glyphs.
+# Read it top to bottom with `filigree explain examples/reference.fil` open in
+# another window; every bar demonstrates exactly one idea.
+
+@title "Token and glyph tour"
+@tempo 100
+@key C major
+@grid 10ms
+@seed 1
+
+# --- note tokens (SPEC 5) -------------------------------------------------
+stave tokens {
+  # rest, tie, retrigger | degrees and negatives | octave shifts (sticky)
+  notes | 0 . - =  | 0 2 4 -2 | ^0 ^2 _0 _2 |
+  press | ____^^^^ | ^^^^____ | ____^^^^ |
+}
+
+stave tokens2 {
+  after tokens
+  # accidentals and absolute pitches | chord | group | alternation (x2 bars)
+  notes | #4 b3 C4 Eb3 | (0 2 4) [0 2 4] <0 4> 7 | (0 2 4) [0 2 4] <0 4> 7 |
+  press | ^^^^____ | ____^^^^ | ^^^^____ |
+}
+
+# --- decorations ----------------------------------------------------------
+stave decorations {
+  after tokens2
+  # explicit velocity, gate, accent, soften, probability
+  notes | 0:v40 2:v127 4%25 5%100 | 0' 2, 4' 5, | 0?90 2?90 4?90 5?90 |
+}
+
+# --- chord-relative pitches (SPEC 5 + 4) ----------------------------------
+stave harmonic {
+  after decorations
+  harm  | i9   | IV^7 | V7   | vi7  |
+  notes | ~1 ~3 ~5 ~7 | ~1 ~3 ~5 ~7 | @root @guide @low @high | ~7 ~5 ~3 ~1 |
+}
+
+# --- curve glyphs (SPEC 7) ------------------------------------------------
+stave glyphs {
+  after harmonic
+  harm   | i9 | IV^7 | V7 | vi7 |
+  notes  | 0 - - - | 0 - - - | 0 - - - | 0 - - - |
+  # rest / min / centre / max ; ramps ; explicit levels ; wiggle ; hold
+  press  | _v-^_v-^ | /^^\__/^ | 02468642 | ~~~~~~~~ |
+  # the same four bars on a bipolar lane: here `_` is 0 st (at rest) and `v`
+  # is the full -4 st, plus a harmonic resolve at the end
+  bend!range=4st | _v-^_v-^ | /^^\__/^ | 0246 | ~5~5~5>3 |
+  # an empty bar writes nothing at all; an absent lane never fights the DAW
+  timbre | ^^^^ | | 3456 | |
+}
+
+# --- time modes (SPEC 7.1) ------------------------------------------------
+stave timemodes {
+  after glyphs
+  # bar time: one drawn swell, sliced across four notes of different lengths
+  notes            | 0 - 2 3 | 4 - - 5 |
+  press!time=bar   | __/^^^\_ | __/^^^\_ |
+  # note time: every note gets the whole shape, whatever its length
+  timbre!time=note | _/^\ | _/^\ |
+}

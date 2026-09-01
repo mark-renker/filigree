@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Filigree — playground</title>
+<!-- inline icon: keeps the page free of a favicon.ico 404 and of any network request -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M2 18c3 0 3-12 6-12s3 12 6 12 3-12 6-12' fill='none' stroke='%236ee7d0' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header id="bar">
+  <div class="brand">
+    <svg class="mark" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M2 18c3 0 3-12 6-12s3 12 6 12 3-12 6-12" fill="none" stroke="currentColor"
+            stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+    <b>filigree</b><span class="sub">playground</span>
+  </div>
+
+  <div class="transport">
+    <button id="btnPlay" class="btn primary" title="Play / stop (Space)" aria-label="Play">
+      <span class="gl" id="playGlyph" aria-hidden="true">▶</span><span id="playLabel">play</span></button>
+    <button id="btnStop" class="btn" title="Stop and rewind" aria-label="Stop and rewind">
+      <span aria-hidden="true">■</span></button>
+    <button id="btnCompile" class="btn" title="Compile the source (Cmd/Ctrl+Enter)"
+            aria-label="Compile the source, shortcut Command or Control Enter">compile <kbd>⌘⏎</kbd></button>
+    <span class="tsep" aria-hidden="true"></span>
+    <span class="meterbox"><b id="mPos">1.1.0</b><i>bar</i></span>
+    <span class="meterbox"><b id="mTempo">—</b><i>bpm</i></span>
+    <span class="meterbox opt"><b id="mKey">—</b><i>key</i></span>
+    <span class="meterbox opt"><b id="mMeter">—</b><i>meter</i></span>
+    <span class="meterbox"><b id="mNotes">—</b><i>notes</i></span>
+  </div>
+
+  <div class="right">
+    <label class="vol"><i>vol</i>
+      <input id="vol" type="range" min="0" max="100" value="72" aria-label="Output volume"></label>
+    <span id="apiPill" class="pill offline" title="Compiler backend status"
+          role="status">fixture</span>
+  </div>
+</header>
+
+<!-- first five seconds: three steps, always on screen, at every viewport width -->
+<div id="howto">
+  <span class="lead">start here</span>
+  <button class="step" id="stepPlay" type="button"><b>1</b>hit play</button>
+  <button class="step" id="stepEdit" type="button"><b>2</b>change something</button>
+  <button class="step" id="stepCompile" type="button"><b>3</b>hit compile <kbd>⌘⏎</kbd></button>
+  <span class="tail">lanes line up in columns — read <b>down</b> a bar. Click a note to inspect it.</span>
+</div>
+
+<main id="app">
+
+  <!-- ────────────────────────────────── left: editor ───────────────────────────── -->
+  <section id="left">
+    <div class="paneHead">
+      <span class="ph-title">source</span>
+      <span class="ph-file" id="srcName">fixtures/source.fil</span>
+      <span class="flex"></span>
+      <span class="ph-hint">Tab indents · <b>Esc then Tab</b> leaves the editor</span>
+      <span class="dirty" id="dirty" hidden title="unsaved edits">●</span>
+    </div>
+
+    <div id="edWrap">
+      <div id="gutter" aria-hidden="true"></div>
+      <div id="edScroll">
+        <pre id="hl" aria-hidden="true"></pre>
+        <textarea id="ta" spellcheck="false" autocomplete="off" autocapitalize="off"
+                  wrap="off" aria-label="Filigree source code. Tab indents when the caret is in indentation; press Escape then Tab to move focus out."></textarea>
+      </div>
+    </div>
+
+    <div class="paneHead sub2">
+      <span class="ph-title">diagnostics</span>
+      <span id="diagCount" class="chip" aria-label="problem count">0</span>
+      <span class="flex"></span>
+      <span class="ph-hint">click a row to jump to line:col</span>
+    </div>
+    <div id="diag" role="log" aria-label="Compiler diagnostics"></div>
+  </section>
+
+  <div id="split" title="Drag to resize" role="separator" aria-orientation="vertical"
+       aria-label="Resize the editor pane" tabindex="0"></div>
+
+  <!-- ─────────────────────────────── right: roll + detail ──────────────────────── -->
+  <section id="right">
+    <div class="paneHead">
+      <span class="ph-title">performance</span>
+      <span id="rollRange" class="chip" title="visible span of the score">—</span>
+      <span class="flex"></span>
+      <span class="staves" id="staveLegend" role="group" aria-label="Staves: mute and solo"></span>
+      <span class="tsep" aria-hidden="true"></span>
+      <label class="zoom"><i>zoom</i>
+        <input id="zoom" type="range" min="1" max="150" value="46" aria-label="Horizontal zoom, pixels per beat"></label>
+      <label class="zoom opt"><i>rows</i>
+        <input id="zoomY" type="range" min="4" max="20" value="9" aria-label="Row height in pixels"></label>
+      <label class="tog"><input type="checkbox" id="showCurves" checked
+             aria-label="Draw per-note expression curves"><i>curves</i></label>
+    </div>
+
+    <div id="rollHost">
+      <div id="rollKeys"><canvas id="cKeys" aria-hidden="true"></canvas></div>
+      <div id="rollScroll" tabindex="0" role="application"
+           aria-label="Piano roll. Arrow keys move the note selection, Enter auditions the selected note, Escape clears it."
+           aria-describedby="rollStatus">
+        <div id="rollInner">
+          <canvas id="cRibbon" aria-hidden="true"></canvas>
+          <canvas id="cRuler" aria-hidden="true"></canvas>
+          <canvas id="cRoll" role="img" aria-label="Piano roll of the compiled score"></canvas>
+          <canvas id="cOver" aria-hidden="true"></canvas>
+        </div>
+        <div id="rollEmpty">Nothing to draw yet — the document is empty.<br>
+          Type a <code>stave</code> block on the left, then hit <b>compile</b>.</div>
+      </div>
+    </div>
+    <p id="rollStatus" class="sr" role="status" aria-live="polite"></p>
+
+    <div class="paneHead sub2">
+      <span class="ph-title">note inspector</span>
+      <span class="flex"></span>
+      <span class="ph-hint" id="inspHint">bend <b id="hintRange">±2 st</b> · press → <b>opacity</b> · timbre → <b>hue</b> · hover or click a note</span>
+    </div>
+    <div id="insp">
+      <div id="inspMeta"></div>
+      <canvas id="cInsp" role="img" aria-label="Expression curves for the selected note"></canvas>
+      <div id="inspLegend">
+        <span class="lg lg-bend" id="lgBend">bend ±2 st</span>
+        <span class="lg lg-press">press 0–1</span>
+        <span class="lg lg-timbre">timbre 0–1</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="synth.js"></script>
+<script src="editor.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

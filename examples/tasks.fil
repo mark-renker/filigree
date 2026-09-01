@@ -1,0 +1,94 @@
+# examples/tasks.fil — the six canonical composition tasks from
+# refs/syntax/tasks.md, solved in Filigree.  Common ground for all six:
+# key C minor, ii-V-i as Dm7b5 - G7 - Cm9.
+#
+#   filigree render examples/tasks.fil -o tasks.mid
+#   filigree explain examples/tasks.fil
+#
+# Every stave below is playable on its own; they are laid out one after another
+# with `after` so the file reads as six numbered exhibits rather than a mush.
+
+@title "Six canonical tasks"
+@tempo 84
+@key C minor
+@bend-range 48st
+@seed 7
+
+voicing four   { range: C3..C5, mode: smooth, size: 4 }
+voicing spread { range: C3..C5, mode: open,   size: 5, spread: 1.1 }
+
+# T3's gesture: 6 Hz wiggle that starts 35% in and widens to +/-35 cents.
+# `ramp(0,1)` is the depth envelope; `@ onset..100%` is the delay.
+gesture swell(rate: 6hz, depth: 0.35st, onset: 35%) =
+          bend((wiggle(rate, depth) * ramp(0, 1)) @ onset..100%)
+
+# T6's gesture: one named, parameterised vibrato, reused twelve times.
+gesture vibr(rate: 5.2hz, depth: 0.3st, onset: 30%) =
+          bend(wiggle(rate, depth) @ onset..100%)
+
+
+# --------------------------------------------------------------------------
+# T1. 4-bar minor-key ii-V-i, exactly four voices, smooth voice leading.
+#     `mode: smooth` solves the voice leading; no chord is spelled by hand.
+# --------------------------------------------------------------------------
+stave t1_voicing {
+  harm!voicing=four | ii7b5 | V7 | i9 | - |
+}
+
+
+# --------------------------------------------------------------------------
+# T2. A melody over the progression; the last note bends up into the *next
+#     chord's third* — `>3`, one glyph, no hand-typed bend amount.
+#     D5 -> Eb5 (the 3rd of Cm9), arriving exactly at the bar line.
+# --------------------------------------------------------------------------
+stave t2_target {
+  after t1_voicing
+  harm!voicing=four | ii7b5 | V7           | i9 | - |
+  notes             | .     | C5 Eb5 D5 D5 | ~3 - - - | - - - - |
+  bend!range=4st    |       | xxx>3        |    |   |
+}
+
+
+# --------------------------------------------------------------------------
+# T3. Vibrato that starts 35% into a held note and widens toward the end.
+#     Both halves of the gesture are named parameters, so the diff cost of
+#     "make it wider" is three characters: depth: 0.5st.
+# --------------------------------------------------------------------------
+stave t3_delayed_vibrato {
+  after t2_target
+  notes | C4!swell - - - |
+}
+
+
+# --------------------------------------------------------------------------
+# T4. One chord, four named voices, four independent expression curves.
+#     The voices are members of one chord, not four parallel patterns.
+# --------------------------------------------------------------------------
+stave t4_four_voices {
+  after t3_delayed_vibrato
+  voices        | { bass: C4 - - - ; tenor: Eb4 - - - ; alto: G4 - - - ; sop: Bb4 - - - } |
+  press@bass    | ___/^^^^ |
+  press@tenor   | ^^^^\___ |
+  timbre@alto   | __/^^^^^ |
+  timbre@sop    | ^^^^^\__ |
+}
+
+
+# --------------------------------------------------------------------------
+# T5. Modal interchange in the middle of the progression: bar 2's V7 becomes
+#     IV borrowed from the parallel dorian.  One letter: `IVd`.
+# --------------------------------------------------------------------------
+stave t5_interchange {
+  after t4_four_voices
+  harm!voicing=four | ii7b5 | IVd | i9 | - |
+}
+
+
+# --------------------------------------------------------------------------
+# T6. Twelve notes, one named gesture on all of them, one parameter changed
+#     on the seventh only — a local edit, not a rewritten copy.
+# --------------------------------------------------------------------------
+stave t6_reuse {
+  after t5_interchange
+  notes | 0!vibr 1!vibr 2!vibr 3!vibr 4!vibr 5!vibr | 6!vibr(depth: 0.7st) 7!vibr 8!vibr 9!vibr 10!vibr 11!vibr |
+}

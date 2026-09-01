@@ -1,0 +1,52 @@
+# examples/blue_iron.fil — a short blues-inflected piece in G mixolydian.
+# The whole point of the language in twelve bars: the melody names *harmonic*
+# destinations (`>3`, `>`, `~7`) rather than pitches, and the expression is
+# drawn under the notes it belongs to.
+#
+#   filigree render examples/blue_iron.fil -o blue_iron.mid
+#   filigree explain examples/blue_iron.fil
+
+@title "Blue iron"
+@tempo 88
+@key G mixolydian
+@grid 8ms
+@bend-range 48st
+@seed 17
+
+voicing grit { range: C3..C5, mode: rootless, size: 4, spread: 1.0 }
+feel    lean { timing: 11ms gauss, velocity: 10%, gate: 6%, seed: 17 }
+
+gesture scoop  = bend(-0.9st -> 0, shape: exp)
+gesture wail(depth: 0.5st) = bend(wiggle(6.2hz, depth) @ 45%..100%)
+gesture dig    = press(0.25 -> 0.95, shape: exp) | timbre(0.3 -> 0.75)
+
+part head {
+  notes          | 0!scoop . b3 3 | 4 - ~7 4  | b3 0 . -2 | 0 - - -  |
+  # `v` is the deliberate downward bend; `_` is the in-tune resting floor.
+  bend!range=6st | ______/^       | ___456_>3 | _v______  | ________ |
+  press          | __/^^^\_       | ^^\___/^  | __/^^^^^  | ^^^^\___ |
+}
+
+stave lead {
+  feel lean
+  gesture dig
+  harm!voicing=grit | I7 | I7 | IV7 | I7 |
+  play head
+}
+
+stave answer {
+  after lead
+  feel lean
+  harm!voicing=grit | IV7 | I7 | V7 | I7 |
+  notes             | ~3 ~5 ~7 -   | 4!wail - - -  | ~7 ~5 4 b3 | 0!wail(depth: 0.8st) - - - |
+  bend!range=4st    | ____4567     | ~4~4~4~4      | _v_>       | ~6~6~6~6   |
+  press             | __/^^^^\     | _/^^^^^\      | ^^^\____   | __/^^^^\   |
+  timbre            | 23456789     |               | 87654321   | 23456789   |
+}
+
+stave bed {
+  channelgroup 1
+  harm!voicing=grit | I7 | I7 | IV7 | I7 | IV7 | I7 | V7 | I7 |
+  press!time=note   | _/^^^\_ | _/^^^\_ | _/^^^\_ | _/^^^\_ | _/^^^\_ | _/^^^\_ | _/^^^\_ | _/^^^\_ |
+  timbre            | 2222 | 3333 | 4444 | 3333 | 4444 | 3333 | 5555 | 2222 |
+}

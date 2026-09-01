@@ -1,0 +1,1192 @@
+{
+ "renders": [
+  {
+   "label": "probe_loose",
+   "n_notes": 1536,
+   "tatum_ms": 125.11769943019912,
+   "runfrac": 0.9485677083333334,
+   "n_res": 1457,
+   "abs_res_ms": 8.00128615804141,
+   "res_over_tatum": 0.06395007416600704,
+   "res_kurtosis": 3.5108791654455374,
+   "res_skew": -0.5070055067063153,
+   "res_k2": 181.06307630220508,
+   "res_k2_p": 4.815623695605995e-40,
+   "res_lag1_r": 0.6496397138334713,
+   "res_parity_ms": 0.4130953774392765,
+   "vel_sd": 13.402401466726989,
+   "vel_iqr": 18.0,
+   "vel_lag1_r": 0.4292134300840145,
+   "vel_acf": [
+    0.4292134300840145,
+    0.5098262300365196,
+    0.05856891203061721,
+    0.20620488214123847,
+    -0.059194898170558036,
+    0.24814020739263065,
+    0.001056089391888918,
+    0.3358309281327651
+   ],
+   "gate": {
+    "n": 1535,
+    "q1": 0.5471014492753745,
+    "median": 1.0878048780488259,
+    "q3": 3.0912057816659715,
+    "iqr_width": 2.5441043323905967
+   },
+   "chord_spread_ms": NaN,
+   "chord_pitch_onset_r": NaN,
+   "chord_top_lead_ms": NaN,
+   "n_chords": 0,
+   "abs_res_ms_seedmed": 8.702733053404188,
+   "abs_res_ms_seedrange": [
+    8.00128615804141,
+    9.020212500203684
+   ],
+   "res_over_tatum_seedmed": 0.06959853369704633,
+   "res_over_tatum_seedrange": [
+    0.06395007416600704,
+    0.07217285609674974
+   ],
+   "res_kurtosis_seedmed": 3.6803751504502955,
+   "res_kurtosis_seedrange": [
+    1.9601880395444375,
+    5.120768987187166
+   ],
+   "vel_sd_seedmed": 13.402401466726989,
+   "vel_sd_seedrange": [
+    12.940530213408024,
+    13.621869628641143
+   ],
+   "vel_lag1_r_seedmed": 0.4237221055282191,
+   "vel_lag1_r_seedrange": [
+    0.41131695962695236,
+    0.4704668537671206
+   ],
+   "gate_width_seedmed": 2.598863086438499,
+   "gate_med_seedmed": 1.0878048780488259,
+   "md5": "2b6c263534e3eb903a3fe3904e0e76f2"
+  },
+  {
+   "label": "probe_tight",
+   "n_notes": 1536,
+   "tatum_ms": 125.00099012294037,
+   "runfrac": 0.951171875,
+   "n_res": 1461,
+   "abs_res_ms": 8.404441846870725,
+   "res_over_tatum": 0.06723500220762114,
+   "res_kurtosis": 4.8687768733448635,
+   "res_skew": -0.1339002675663813,
+   "res_k2": 168.83983867135615,
+   "res_k2_p": 2.1721752940542755e-37,
+   "res_lag1_r": 0.7288618486394172,
+   "res_parity_ms": 1.1186020968096955,
+   "vel_sd": 11.352251492045692,
+   "vel_iqr": 16.0,
+   "vel_lag1_r": 0.3989258644893638,
+   "vel_acf": [
+    0.3989258644893638,
+    0.453574494809389,
+    0.013957968598977051,
+    0.15672495140869563,
+    -0.11360366012536068,
+    0.18349658062012417,
+    -0.05867203223738969,
+    0.27726080000846665
+   ],
+   "gate": {
+    "n": 1535,
+    "q1": 0.5337401973185039,
+    "median": 1.0085470085470007,
+    "q3": 2.383150728645835,
+    "iqr_width": 1.849410531327331
+   },
+   "chord_spread_ms": NaN,
+   "chord_pitch_onset_r": NaN,
+   "chord_top_lead_ms": NaN,
+   "n_chords": 0,
+   "abs_res_ms_seedmed": 8.56699665255789,
+   "abs_res_ms_seedrange": [
+    8.110119047614717,
+    9.30567985257369
+   ],
+   "res_over_tatum_seedmed": 0.06847455333813415,
+   "res_over_tatum_seedrange": [
+    0.0648823707310481,
+    0.07434700743062948
+   ],
+   "res_kurtosis_seedmed": 4.0463448508914945,
+   "res_kurtosis_seedrange": [
+    1.881612483141935,
+    4.8687768733448635
+   ],
+   "vel_sd_seedmed": 11.602312426294628,
+   "vel_sd_seedrange": [
+    11.352251492045692,
+    11.71836940207143
+   ],
+   "vel_lag1_r_seedmed": 0.44357742748216755,
+   "vel_lag1_r_seedrange": [
+    0.3989258644893638,
+    0.47973525099316533
+   ],
+   "gate_width_seedmed": 1.7434492184958081,
+   "gate_med_seedmed": 0.9703389830508171,
+   "md5": "af730b3770a5fd6464fc3dd569b23018"
+  },
+  {
+   "label": "probe_pushed",
+   "n_notes": 1536,
+   "tatum_ms": 125.06207556104967,
+   "runfrac": 0.9791666666666666,
+   "n_res": 1504,
+   "abs_res_ms": 8.096772627331106,
+   "res_over_tatum": 0.06474202983604431,
+   "res_kurtosis": 4.005043394458602,
+   "res_skew": 0.16735228093550827,
+   "res_k2": 151.1760637377999,
+   "res_k2_p": 1.4877667943534745e-33,
+   "res_lag1_r": 0.7185425187058105,
+   "res_parity_ms": 0.9087930516571419,
+   "vel_sd": 12.700173535340717,
+   "vel_iqr": 17.0,
+   "vel_lag1_r": 0.44403261573588604,
+   "vel_acf": [
+    0.44403261573588604,
+    0.6214331828502879,
+    0.14324039332548413,
+    0.36188023223011834,
+    -0.028210340461623955,
+    0.28684456472483133,
+    -0.0720978190612479,
+    0.2686347845199488
+   ],
+   "gate": {
+    "n": 1535,
+    "q1": 0.49041920563835517,
+    "median": 0.9110169491525668,
+    "q3": 2.1747171309468785,
+    "iqr_width": 1.6842979253085233
+   },
+   "chord_spread_ms": NaN,
+   "chord_pitch_onset_r": NaN,
+   "chord_top_lead_ms": NaN,
+   "n_chords": 0,
+   "abs_res_ms_seedmed": 8.724824731672243,
+   "abs_res_ms_seedrange": [
+    8.096772627331106,
+    10.000670570164516
+   ],
+   "res_over_tatum_seedmed": 0.06976714678263392,
+   "res_over_tatum_seedrange": [
+    0.06474202983604431,
+    0.0799918961900483
+   ],
+   "res_kurtosis_seedmed": 4.005043394458602,
+   "res_kurtosis_seedrange": [
+    2.261215164608938,
+    5.413477948353648
+   ],
+   "vel_sd_seedmed": 12.581041781585068,
+   "vel_sd_seedrange": [
+    12.276182715002138,
+    13.200746588277527
+   ],
+   "vel_lag1_r_seedmed": 0.44403261573588604,
+   "vel_lag1_r_seedrange": [
+    0.38717470004279037,
+    0.4633595666326062
+   ],
+   "gate_width_seedmed": 1.8494714293120835,
+   "gate_med_seedmed": 0.9110169491525668,
+   "md5": "8553065ba978e1b9254d9279f447184d"
+  },
+  {
+   "label": "probe_breath",
+   "n_notes": 1536,
+   "tatum_ms": 125.06988774869515,
+   "runfrac": 0.990228013029316,
+   "n_res": 1520,
+   "abs_res_ms": 7.736014383047163,
+   "res_over_tatum": 0.0618535326312218,
+   "res_kurtosis": 3.2850288117271216,
+   "res_skew": 0.6918609102456424,
+   "res_k2": 223.33453458837914,
+   "res_k2_p": 3.188027103186343e-49,
+   "res_lag1_r": 0.7202221962744934,
+   "res_parity_ms": 0.40303395897378635,
+   "vel_sd": 13.347594742367912,
+   "vel_iqr": 18.0,
+   "vel_lag1_r": 0.5126899287410218,
+   "vel_acf": [
+    0.5126899287410218,
+    0.5445859519228872,
+    0.14019067969436647,
+    0.23158178232045987,
+    -0.021620230772359122,
+    0.22868526098224437,
+    0.0074495442619363075,
+    0.27498709494135276
+   ],
+   "gate": {
+    "n": 1535,
+    "q1": 0.5821593153390434,
+    "median": 1.0863636363638607,
+    "q3": 3.2317086834734,
+    "iqr_width": 2.6495493681343563
+   },
+   "chord_spread_ms": 45.312499999994316,
+   "chord_pitch_onset_r": NaN,
+   "chord_top_lead_ms": NaN,
+   "n_chords": 1,
+   "abs_res_ms_seedmed": 8.30772160151838,
+   "abs_res_ms_seedrange": [
+    7.736014383047163,
+    9.018981052989261
+   ],
+   "res_over_tatum_seedmed": 0.06645770351526897,
+   "res_over_tatum_seedrange": [
+    0.0618535326312218,
+    0.07211143925434982
+   ],
+   "res_kurtosis_seedmed": 5.436808734627586,
+   "res_kurtosis_seedrange": [
+    3.2850288117271216,
+    8.365730479661002
+   ],
+   "vel_sd_seedmed": 12.939187908193242,
+   "vel_sd_seedrange": [
+    12.703065141514053,
+    13.366129192558155
+   ],
+   "vel_lag1_r_seedmed": 0.4947615276372873,
+   "vel_lag1_r_seedrange": [
+    0.46443283860599,
+    0.5126899287410218
+   ],
+   "gate_width_seedmed": 3.0459909921672406,
+   "gate_med_seedmed": 1.0933333333334303,
+   "md5": "d503f5c0895225678464045067eabc46"
+  },
+  {
+   "label": "probe_none",
+   "n_notes": 1536,
+   "tatum_ms": 125.0,
+   "runfrac": 1.0,
+   "n_res": 1536,
+   "abs_res_ms": 0.0,
+   "res_over_tatum": 0.0,
+   "res_kurtosis": -1.402342181533582,
+   "res_skew": 0.743732837077638,
+   "res_k2": 17742.634914164963,
+   "res_k2_p": 0.0,
+   "res_lag1_r": 0.9982657433422193,
+   "res_parity_ms": 0.0,
+   "vel_sd": 0.0,
+   "vel_iqr": 0.0,
+   "vel_lag1_r": NaN,
+   "vel_acf": [
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN
+   ],
+   "gate": {
+    "n": 1535,
+    "q1": 1.0,
+    "median": 1.0,
+    "q3": 1.0,
+    "iqr_width": 0.0
+   },
+   "chord_spread_ms": NaN,
+   "chord_pitch_onset_r": NaN,
+   "chord_top_lead_ms": NaN,
+   "n_chords": 0,
+   "md5": "eed04534123faa3904f2b434fee7b26d"
+  },
+  {
+   "label": "pulse_loose",
+   "n_notes": 39,
+   "tatum_ms": NaN,
+   "runfrac": 0.0,
+   "n_res": 0,
+   "abs_res_ms": NaN,
+   "res_over_tatum": NaN,
+   "res_kurtosis": NaN,
+   "res_skew": NaN,
+   "res_k2": NaN,
+   "res_k2_p": NaN,
+   "res_lag1_r": NaN,
+   "res_parity_ms": NaN,
+   "vel_sd": 9.371979945409935,
+   "vel_iqr": 9.0,
+   "vel_lag1_r": 0.4168937423515074,
+   "vel_acf": [
+    0.4168937423515074,
+    0.35034989794051796,
+    0.4008853125133706,
+    0.033784090216500924,
+    -0.08600946765098869,
+    -0.1947568340168085,
+    -0.2573414000524479,
+    -0.26027587733252
+   ],
+   "gate": {
+    "n": 35,
+    "q1": 0.6262941176470618,
+    "median": 1.363283582089549,
+    "q3": 4.0,
+    "iqr_width": 3.3737058823529384
+   },
+   "chord_spread_ms": 22.963992187500004,
+   "chord_pitch_onset_r": -0.47360679774997894,
+   "chord_top_lead_ms": -5.918554687500244,
+   "n_chords": 8,
+   "md5": "5d771d6aa08daf383c4c1ce6ed37a825"
+  },
+  {
+   "label": "pulse_tight",
+   "n_notes": 39,
+   "tatum_ms": NaN,
+   "runfrac": 0.0,
+   "n_res": 0,
+   "abs_res_ms": NaN,
+   "res_over_tatum": NaN,
+   "res_kurtosis": NaN,
+   "res_skew": NaN,
+   "res_k2": NaN,
+   "res_k2_p": NaN,
+   "res_lag1_r": NaN,
+   "res_parity_ms": NaN,
+   "vel_sd": 8.468166953476818,
+   "vel_iqr": 14.0,
+   "vel_lag1_r": -0.0359671285996667,
+   "vel_acf": [
+    -0.0359671285996667,
+    0.06719130375811876,
+    0.14690819187723875,
+    0.16715708804170273,
+    -0.29734003312118096,
+    -0.01888369847779967,
+    0.13298034066401507,
+    -0.21863273586265
+   ],
+   "gate": {
+    "n": 34,
+    "q1": 1.0123126338329764,
+    "median": 2.261492727103578,
+    "q3": 4.0,
+    "iqr_width": 2.9876873661670236
+   },
+   "chord_spread_ms": 21.070054687500892,
+   "chord_pitch_onset_r": 0.39999999999999997,
+   "chord_top_lead_ms": 1.1047968749999804,
+   "n_chords": 8,
+   "md5": "4b9c7b87ac24ffe1caedef5b5db3ecd3"
+  },
+  {
+   "label": "pulse_pushed",
+   "n_notes": 39,
+   "tatum_ms": NaN,
+   "runfrac": 0.0,
+   "n_res": 0,
+   "abs_res_ms": NaN,
+   "res_over_tatum": NaN,
+   "res_kurtosis": NaN,
+   "res_skew": NaN,
+   "res_k2": NaN,
+   "res_k2_p": NaN,
+   "res_lag1_r": NaN,
+   "res_parity_ms": NaN,
+   "vel_sd": 9.965189072584709,
+   "vel_iqr": 14.5,
+   "vel_lag1_r": -0.10192912457872767,
+   "vel_acf": [
+    -0.10192912457872767,
+    -0.05598668204879516,
+    -0.27610032318116506,
+    -0.016569744130156567,
+    0.21041307018169045,
+    -0.038647369522433375,
+    -0.1843521006296252,
+    -0.059946022949662205
+   ],
+   "gate": {
+    "n": 37,
+    "q1": 0.9695652173913067,
+    "median": 1.9346846846847028,
+    "q3": 4.0,
+    "iqr_width": 3.030434782608693
+   },
+   "chord_spread_ms": 13.96778906250018,
+   "chord_pitch_onset_r": -0.516227766016838,
+   "chord_top_lead_ms": -11.600367187500016,
+   "n_chords": 8,
+   "md5": "443c1563f41ded25a690eb8d7346bef5"
+  },
+  {
+   "label": "pulse_breath",
+   "n_notes": 39,
+   "tatum_ms": NaN,
+   "runfrac": 0.0,
+   "n_res": 0,
+   "abs_res_ms": NaN,
+   "res_over_tatum": NaN,
+   "res_kurtosis": NaN,
+   "res_skew": NaN,
+   "res_k2": NaN,
+   "res_k2_p": NaN,
+   "res_lag1_r": NaN,
+   "res_parity_ms": NaN,
+   "vel_sd": 10.973160730175076,
+   "vel_iqr": 13.5,
+   "vel_lag1_r": 0.29125567432871496,
+   "vel_acf": [
+    0.29125567432871496,
+    0.0818753979135126,
+    0.10882985680966568,
+    -0.1405009686450787,
+    -0.004537939871892538,
+    -0.17420144139764915,
+    -0.1286003076408692,
+    -0.12646979819807905
+   ],
+   "gate": {
+    "n": 35,
+    "q1": 1.0316027088036124,
+    "median": 3.538617886179144,
+    "q3": 4.0,
+    "iqr_width": 2.9683972911963874
+   },
+   "chord_spread_ms": 13.967789062500069,
+   "chord_pitch_onset_r": -0.8103913408340617,
+   "chord_top_lead_ms": -18.58426171875143,
+   "n_chords": 8,
+   "md5": "9d0b14a20ef7168cb210ee75def672ec"
+  },
+  {
+   "label": "pulse_none",
+   "n_notes": 39,
+   "tatum_ms": NaN,
+   "runfrac": 0.0,
+   "n_res": 0,
+   "abs_res_ms": NaN,
+   "res_over_tatum": NaN,
+   "res_kurtosis": NaN,
+   "res_skew": NaN,
+   "res_k2": NaN,
+   "res_k2_p": NaN,
+   "res_lag1_r": NaN,
+   "res_parity_ms": NaN,
+   "vel_sd": 0.0,
+   "vel_iqr": 0.0,
+   "vel_lag1_r": NaN,
+   "vel_acf": [
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN
+   ],
+   "gate": {
+    "n": 24,
+    "q1": 0.8750000000000018,
+    "median": 1.0,
+    "q3": 1.0,
+    "iqr_width": 0.12499999999999822
+   },
+   "chord_spread_ms": 0.0,
+   "chord_pitch_onset_r": NaN,
+   "chord_top_lead_ms": NaN,
+   "n_chords": 8,
+   "md5": "17031d8ee3198e44a9f72406e0cb794e"
+  },
+  {
+   "label": "nocturne_loose",
+   "n_notes": 25,
+   "tatum_ms": NaN,
+   "runfrac": 0.0,
+   "n_res": 0,
+   "abs_res_ms": NaN,
+   "res_over_tatum": NaN,
+   "res_kurtosis": NaN,
+   "res_skew": NaN,
+   "res_k2": NaN,
+   "res_k2_p": NaN,
+   "res_lag1_r": NaN,
+   "res_parity_ms": NaN,
+   "vel_sd": 9.16787870774914,
+   "vel_iqr": 0.0,
+   "vel_lag1_r": -0.2806486515995522,
+   "vel_acf": [
+    -0.2806486515995522,
+    -0.25633730173452396,
+    -0.9847381420462225,
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN
+   ],
+   "gate": {
+    "n": 14,
+    "q1": 1.0,
+    "median": 1.1750849782555632,
+    "q3": 3.578988219513005,
+    "iqr_width": 2.578988219513005
+   },
+   "chord_spread_ms": 2.693966145832949,
+   "chord_pitch_onset_r": 0.35355339059327373,
+   "chord_top_lead_ms": 0.538793229166501,
+   "n_chords": 4,
+   "md5": "e8c1fe88690dab3bde19938f85cedb8c"
+  },
+  {
+   "label": "nocturne_tight",
+   "n_notes": 25,
+   "tatum_ms": NaN,
+   "runfrac": 0.0,
+   "n_res": 0,
+   "abs_res_ms": NaN,
+   "res_over_tatum": NaN,
+   "res_kurtosis": NaN,
+   "res_skew": NaN,
+   "res_k2": NaN,
+   "res_k2_p": NaN,
+   "res_lag1_r": NaN,
+   "res_parity_ms": NaN,
+   "vel_sd": 2.6832815729997477,
+   "vel_iqr": 0.0,
+   "vel_lag1_r": -0.15733976655990953,
+   "vel_acf": [
+    -0.15733976655990953,
+    -0.12463700400439426,
+    -0.3523807393012046,
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN
+   ],
+   "gate": {
+    "n": 14,
+    "q1": 0.5269797704353866,
+    "median": 1.0,
+    "q3": 3.590902382683905,
+    "iqr_width": 3.0639226122485184
+   },
+   "chord_spread_ms": 2.155172916666448,
+   "chord_pitch_onset_r": 0.35355339059327373,
+   "chord_top_lead_ms": 1.3469830729153642,
+   "n_chords": 4,
+   "md5": "64a6dde7dc894147eeae55d65e285ba9"
+  },
+  {
+   "label": "nocturne_pushed",
+   "n_notes": 25,
+   "tatum_ms": NaN,
+   "runfrac": 0.0,
+   "n_res": 0,
+   "abs_res_ms": NaN,
+   "res_over_tatum": NaN,
+   "res_kurtosis": NaN,
+   "res_skew": NaN,
+   "res_k2": NaN,
+   "res_k2_p": NaN,
+   "res_lag1_r": NaN,
+   "res_parity_ms": NaN,
+   "vel_sd": 2.0124611797498106,
+   "vel_iqr": 0.0,
+   "vel_lag1_r": -0.056143461404434575,
+   "vel_acf": [
+    -0.056143461404434575,
+    -0.09335200560186732,
+    -0.18898223650461363,
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN
+   ],
+   "gate": {
+    "n": 15,
+    "q1": 0.716251298026999,
+    "median": 1.035453597497394,
+    "q3": 4.0,
+    "iqr_width": 3.2837487019730007
+   },
+   "chord_spread_ms": 4.849139062499397,
+   "chord_pitch_onset_r": 0.0,
+   "chord_top_lead_ms": -0.6734915364585703,
+   "n_chords": 4,
+   "md5": "3a8009ec4b7db8afed6bb4028a17f470"
+  },
+  {
+   "label": "nocturne_breath",
+   "n_notes": 25,
+   "tatum_ms": NaN,
+   "runfrac": 0.0,
+   "n_res": 0,
+   "abs_res_ms": NaN,
+   "res_over_tatum": NaN,
+   "res_kurtosis": NaN,
+   "res_skew": NaN,
+   "res_k2": NaN,
+   "res_k2_p": NaN,
+   "res_lag1_r": NaN,
+   "res_parity_ms": NaN,
+   "vel_sd": 4.695742752749558,
+   "vel_iqr": 0.0,
+   "vel_lag1_r": NaN,
+   "vel_acf": [
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN
+   ],
+   "gate": {
+    "n": 15,
+    "q1": 2.9808836816012696,
+    "median": 4.0,
+    "q3": 4.0,
+    "iqr_width": 1.0191163183987304
+   },
+   "chord_spread_ms": 16.70259010416597,
+   "chord_pitch_onset_r": 0.35355339059327373,
+   "chord_top_lead_ms": -3.232759374999006,
+   "n_chords": 4,
+   "md5": "ec7aad93b0eb906c3e4d756965b9ac10"
+  },
+  {
+   "label": "nocturne_none",
+   "n_notes": 25,
+   "tatum_ms": NaN,
+   "runfrac": 0.0,
+   "n_res": 0,
+   "abs_res_ms": NaN,
+   "res_over_tatum": NaN,
+   "res_kurtosis": NaN,
+   "res_skew": NaN,
+   "res_k2": NaN,
+   "res_k2_p": NaN,
+   "res_lag1_r": NaN,
+   "res_parity_ms": NaN,
+   "vel_sd": 0.0,
+   "vel_iqr": 0.0,
+   "vel_lag1_r": NaN,
+   "vel_acf": [
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN,
+    NaN
+   ],
+   "gate": {
+    "n": 11,
+    "q1": 1.0,
+    "median": 1.0,
+    "q3": 1.0,
+    "iqr_width": 0.0
+   },
+   "chord_spread_ms": 0.0,
+   "chord_pitch_onset_r": NaN,
+   "chord_top_lead_ms": NaN,
+   "n_chords": 4,
+   "md5": "c99cdacf2dc6c81ec2673b34ff6af0a3"
+  }
+ ],
+ "isolation": [
+  {
+   "preset": "loose",
+   "dev_mean": 0.412870792084319,
+   "dev_sd": 23.33249907425292,
+   "abs_dev_med": 8.794180548534314,
+   "dev_kurt": 7.120330986393125,
+   "dev_skew": 0.14907647388176773,
+   "dev_k2": 588.676166798526,
+   "dev_k2_p": 1.4811347307567398e-128,
+   "dev_lag1_r": 0.8015342853141264,
+   "dev_min": -112.50000000001137,
+   "dev_max": 112.50000000001137,
+   "vel_sd": 13.641042867487375,
+   "vel_iqr": 18.0,
+   "vel_lag1_r": 0.45791298365086147,
+   "vel_acf": [
+    0.45791298365086147,
+    0.5033186943305898,
+    0.07077025055899223,
+    0.16403798759776472,
+    -0.10036655133833808,
+    0.18019637564390723,
+    -0.043860330464431135,
+    0.2642392835489668
+   ],
+   "gate": {
+    "n": 4000,
+    "q1": 0.5020949152437301,
+    "median": 1.0007191287479982,
+    "q3": 2.8748731094654016,
+    "iqr_width": 2.3727781942216715
+   },
+   "kw_subbeat": {
+    "H": 21.726117589170205,
+    "p": 7.437508209008263e-05,
+    "span_ms": 2.112717469699099
+   },
+   "kw_beat": {
+    "H": 105.96409941844975,
+    "p": 8.10493646230051e-23,
+    "span_ms": 6.3633463133001555
+   },
+   "kw_vel_beat": {
+    "H": 639.3754471980303,
+    "p": 2.9300930290598943e-138,
+    "span_vel": 14.0
+   },
+   "chord_r": -0.39999999999999997,
+   "chord_lead_ms": -6.333644509940228,
+   "chord_spread_ms": 17.35844050224511,
+   "pitches_preserved": true,
+   "order_inversions": 0
+  },
+  {
+   "preset": "tight",
+   "dev_mean": -0.2620602913995187,
+   "dev_sd": 21.78732946319109,
+   "abs_dev_med": 8.849173219630302,
+   "dev_kurt": 6.405929099129446,
+   "dev_skew": 0.011389432188452042,
+   "dev_k2": 534.4496455046328,
+   "dev_k2_p": 8.825392943351819e-117,
+   "dev_lag1_r": 0.7616018396374361,
+   "dev_min": -112.50000000001137,
+   "dev_max": 112.50000000001137,
+   "vel_sd": 11.272764134865506,
+   "vel_iqr": 14.0,
+   "vel_lag1_r": 0.46411183966792346,
+   "vel_acf": [
+    0.46411183966792346,
+    0.4790427008659296,
+    0.07606591455496388,
+    0.17107572748981204,
+    -0.058262563939170085,
+    0.18640063656427033,
+    -0.017603484512254436,
+    0.2572835923350049
+   ],
+   "gate": {
+    "n": 4000,
+    "q1": 0.5416461909453187,
+    "median": 0.9855036835151918,
+    "q3": 2.4624541796485095,
+    "iqr_width": 1.9208079887031908
+   },
+   "kw_subbeat": {
+    "H": 10.489788640243185,
+    "p": 0.014830326911285132,
+    "span_ms": 2.2922837253176453
+   },
+   "kw_beat": {
+    "H": 83.49064942816636,
+    "p": 5.4714967009074566e-18,
+    "span_ms": 5.4952742992071535
+   },
+   "kw_vel_beat": {
+    "H": 562.0216701237654,
+    "p": 1.7223930087100992e-121,
+    "span_vel": 10.0
+   },
+   "chord_r": -0.7999999999999999,
+   "chord_lead_ms": -6.763245499556092,
+   "chord_spread_ms": 14.23285338482927,
+   "pitches_preserved": true,
+   "order_inversions": 0
+  },
+  {
+   "preset": "pushed",
+   "dev_mean": -4.1302952580432475,
+   "dev_sd": 22.0435207550031,
+   "abs_dev_med": 9.297377405687257,
+   "dev_kurt": 8.216087135512208,
+   "dev_skew": 0.2042697506426962,
+   "dev_k2": 656.3242677646261,
+   "dev_k2_p": 3.02688614394553e-143,
+   "dev_lag1_r": 0.8094563822712737,
+   "dev_min": -112.50000000001137,
+   "dev_max": 112.50000000001137,
+   "vel_sd": 12.521848649896018,
+   "vel_iqr": 17.0,
+   "vel_lag1_r": 0.4413451451377873,
+   "vel_acf": [
+    0.4413451451377873,
+    0.6161477074078275,
+    0.13196772911271484,
+    0.3593613725985764,
+    -0.016686444027872484,
+    0.3179489323865144,
+    -0.031450327256471455,
+    0.3223045186749414
+   ],
+   "gate": {
+    "n": 4000,
+    "q1": 0.4723963919170747,
+    "median": 0.9061727044277222,
+    "q3": 2.240722656820341,
+    "iqr_width": 1.7683262649032665
+   },
+   "kw_subbeat": {
+    "H": 22.087312960390395,
+    "p": 6.255846827562107e-05,
+    "span_ms": 1.8446172889738932
+   },
+   "kw_beat": {
+    "H": 448.47376888320207,
+    "p": 6.981234037652488e-97,
+    "span_ms": 11.03749456395775
+   },
+   "kw_vel_beat": {
+    "H": 328.345787238759,
+    "p": 7.278479998880612e-71,
+    "span_vel": 9.5
+   },
+   "chord_r": -0.6000000000000001,
+   "chord_lead_ms": -5.249208867535771,
+   "chord_spread_ms": 16.808650915280055,
+   "pitches_preserved": true,
+   "order_inversions": 0
+  },
+  {
+   "preset": "breath",
+   "dev_mean": 0.9648888405777286,
+   "dev_sd": 25.72456424879359,
+   "abs_dev_med": 8.100181913818005,
+   "dev_kurt": 7.746196207401507,
+   "dev_skew": -0.0726903628782643,
+   "dev_k2": 609.6871477786023,
+   "dev_k2_p": 4.0561874427098674e-133,
+   "dev_lag1_r": 0.8651861647128254,
+   "dev_min": -112.50000000001137,
+   "dev_max": 112.50000000001137,
+   "vel_sd": 12.687780300046008,
+   "vel_iqr": 17.0,
+   "vel_lag1_r": 0.47424992859895027,
+   "vel_acf": [
+    0.47424992859895027,
+    0.49770733052590094,
+    0.07398697049491258,
+    0.1854438752147701,
+    -0.05307973696022647,
+    0.22698411000385707,
+    0.005567354049865612,
+    0.2824623962871273
+   ],
+   "gate": {
+    "n": 4000,
+    "q1": 0.571315000063155,
+    "median": 1.1095062922324646,
+    "q3": 3.1649850459433475,
+    "iqr_width": 2.5936700458801925
+   },
+   "kw_subbeat": {
+    "H": 20.268362055245206,
+    "p": 0.00014933403845987595,
+    "span_ms": 2.249707747679963
+   },
+   "kw_beat": {
+    "H": 105.80685806676692,
+    "p": 8.76148251598002e-23,
+    "span_ms": 6.17401253289529
+   },
+   "kw_vel_beat": {
+    "H": 634.164663836819,
+    "p": 3.9501831903044013e-137,
+    "span_vel": 13.0
+   },
+   "chord_r": -0.7999999999999999,
+   "chord_lead_ms": -7.1962319181082535,
+   "chord_spread_ms": 18.262566840341776,
+   "pitches_preserved": true,
+   "order_inversions": 0
+  }
+ ],
+ "determinism": {
+  "probe": {
+   "md5s": [
+    "2b6c263534e3eb903a3fe3904e0e76f2",
+    "2b6c263534e3eb903a3fe3904e0e76f2",
+    "2b6c263534e3eb903a3fe3904e0e76f2"
+   ],
+   "identical": true
+  },
+  "pulse": {
+   "md5s": [
+    "5d771d6aa08daf383c4c1ce6ed37a825",
+    "5d771d6aa08daf383c4c1ce6ed37a825",
+    "5d771d6aa08daf383c4c1ce6ed37a825"
+   ],
+   "identical": true
+  },
+  "nocturne": {
+   "md5s": [
+    "e8c1fe88690dab3bde19938f85cedb8c",
+    "e8c1fe88690dab3bde19938f85cedb8c",
+    "e8c1fe88690dab3bde19938f85cedb8c"
+   ],
+   "identical": true
+  },
+  "seed_md5s": {
+   "11": "a66cbaba26d6b677b23a559211213253",
+   "12": "0b3c6bac2a5bd5a95ae7c9e4196ae7d7",
+   "13": "94d938c0b3bde56e591c1da39fd436f0",
+   "101": "e12b2333154141e001e222dccdf4bc1b"
+  },
+  "seeds_differ": true,
+  "zero_feel_md5": "d69d0769cb88d8fe403e8e854e55272d",
+  "no_feel_md5": "d69d0769cb88d8fe403e8e854e55272d",
+  "zero_is_bit_exact": true
+ },
+ "edges": [
+  {
+   "label": "absurd",
+   "warnings": [
+    "feel: timing=2000 is above the maximum 500; clamped to 500",
+    "feel: velocity=4 is ambiguous \u2014 a fraction must be <= 1.0; write '4%' if you meant 4 per cent, or 0.04; clamped to 1.0 (100%)",
+    "feel: gate=9 is ambiguous \u2014 a fraction must be <= 1.0; write '9%' if you meant 9 per cent, or 0.09; clamped to 1.0 (100%)",
+    "feel: release=2000 is above the maximum 500; clamped to 500",
+    "feel: onset=2000 is above the maximum 250; clamped to 250",
+    "feel: timing=500 is too large for this music \u2014 it was clamped on 212 of 256 notes to keep the note order, the piece length and the MIDI range intact",
+    "feel: velocity=1 is too large for this music \u2014 it was clamped on 135 of 256 notes to keep the note order, the piece length and the MIDI range intact"
+   ],
+   "inversions": 0,
+   "stacked_at_zero": 1,
+   "max_start": 63.52549096640839,
+   "min_start": 0.0,
+   "max_end": 65.38518308696823,
+   "nan": false,
+   "inf": false,
+   "pitches_preserved": true,
+   "vel_ok": true,
+   "dur_positive": true
+  },
+  {
+   "label": "flat -2000ms",
+   "warnings": [
+    "feel: timing=-2000 is below the minimum -500; clamped to -500",
+    "feel: timing=-500 is too large for this music \u2014 it was clamped on 256 of 256 notes to keep the note order, the piece length and the MIDI range intact"
+   ],
+   "inversions": 0,
+   "stacked_at_zero": 1,
+   "max_start": 63.525,
+   "min_start": 0.0,
+   "max_end": 63.75,
+   "nan": false,
+   "inf": false,
+   "pitches_preserved": true,
+   "vel_ok": true,
+   "dur_positive": true
+  },
+  {
+   "label": "nan timing",
+   "warnings": [
+    "feel: timing=nan is not a usable value; using 0.0"
+   ],
+   "inversions": 0,
+   "stacked_at_zero": 1,
+   "max_start": 63.7544,
+   "min_start": 0.0,
+   "max_end": 63.9794,
+   "nan": false,
+   "inf": false,
+   "pitches_preserved": true,
+   "vel_ok": true,
+   "dur_positive": true
+  },
+  {
+   "label": "inf timing",
+   "warnings": [
+    "feel: timing=inf is infinite; using 0.0"
+   ],
+   "inversions": 0,
+   "stacked_at_zero": 1,
+   "max_start": 63.75,
+   "min_start": 0.0,
+   "max_end": 63.975,
+   "nan": false,
+   "inf": false,
+   "pitches_preserved": true,
+   "vel_ok": true,
+   "dur_positive": true
+  },
+  {
+   "label": "velocity 0.99",
+   "warnings": [
+    "feel: velocity=0.99 is too large for this music \u2014 it was clamped on 133 of 256 notes to keep the note order, the piece length and the MIDI range intact"
+   ],
+   "inversions": 0,
+   "stacked_at_zero": 1,
+   "max_start": 63.7544,
+   "min_start": 0.0,
+   "max_end": 63.9794,
+   "nan": false,
+   "inf": false,
+   "pitches_preserved": true,
+   "vel_ok": true,
+   "dur_positive": true
+  },
+  {
+   "label": "velocity 1.01",
+   "warnings": [
+    "feel: velocity=1.01 is ambiguous \u2014 a fraction must be <= 1.0; write '1.01%' if you meant 1.01 per cent, or 0.0101; clamped to 1.0 (100%)",
+    "feel: velocity=1 is too large for this music \u2014 it was clamped on 135 of 256 notes to keep the note order, the piece length and the MIDI range intact"
+   ],
+   "inversions": 0,
+   "stacked_at_zero": 1,
+   "max_start": 63.7544,
+   "min_start": 0.0,
+   "max_end": 63.9794,
+   "nan": false,
+   "inf": false,
+   "pitches_preserved": true,
+   "vel_ok": true,
+   "dur_positive": true
+  },
+  {
+   "label": "velocity '400%'",
+   "warnings": [
+    "feel: velocity='400%' is above the maximum 100%; clamped to 1.0 (100%)",
+    "feel: velocity=1 is too large for this music \u2014 it was clamped on 135 of 256 notes to keep the note order, the piece length and the MIDI range intact"
+   ],
+   "inversions": 0,
+   "stacked_at_zero": 1,
+   "max_start": 63.7544,
+   "min_start": 0.0,
+   "max_end": 63.9794,
+   "nan": false,
+   "inf": false,
+   "pitches_preserved": true,
+   "vel_ok": true,
+   "dur_positive": true
+  },
+  {
+   "label": "velocity '12%'",
+   "warnings": [],
+   "inversions": 0,
+   "stacked_at_zero": 1,
+   "max_start": 63.7544,
+   "min_start": 0.0,
+   "max_end": 63.9794,
+   "nan": false,
+   "inf": false,
+   "pitches_preserved": true,
+   "vel_ok": true,
+   "dur_positive": true
+  },
+  {
+   "label": "gate 1.0",
+   "warnings": [],
+   "inversions": 0,
+   "stacked_at_zero": 1,
+   "max_start": 63.75,
+   "min_start": 0.0,
+   "max_end": 64.12367642230755,
+   "nan": false,
+   "inf": false,
+   "pitches_preserved": true,
+   "vel_ok": true,
+   "dur_positive": true
+  },
+  {
+   "label": "gate 1.01",
+   "warnings": [
+    "feel: gate=1.01 is ambiguous \u2014 a fraction must be <= 1.0; write '1.01%' if you meant 1.01 per cent, or 0.0101; clamped to 1.0 (100%)"
+   ],
+   "inversions": 0,
+   "stacked_at_zero": 1,
+   "max_start": 63.75,
+   "min_start": 0.0,
+   "max_end": 64.12367642230755,
+   "nan": false,
+   "inf": false,
+   "pitches_preserved": true,
+   "vel_ok": true,
+   "dur_positive": true
+  },
+  {
+   "label": "unknown dist",
+   "warnings": [
+    "feel: timing_dist='triangular' is not a known distribution (gauss, human, t, student-t, studentt, normal, iid, gauss-iid, uniform, flat, flat_rand, rand); using 'gauss'",
+    "feel: timing=20 is too large for this music \u2014 it was clamped on 7 of 256 notes to keep the note order, the piece length and the MIDI range intact"
+   ],
+   "inversions": 0,
+   "stacked_at_zero": 1,
+   "max_start": 63.763743814732706,
+   "min_start": 0.0,
+   "max_end": 63.98874381473271,
+   "nan": false,
+   "inf": false,
+   "pitches_preserved": true,
+   "vel_ok": true,
+   "dur_positive": true
+  },
+  {
+   "label": "negative gate",
+   "warnings": [
+    "feel: gate=-0.5 is negative; the sign of a jitter width is meaningless, using 0.5"
+   ],
+   "inversions": 0,
+   "stacked_at_zero": 1,
+   "max_start": 63.75,
+   "min_start": 0.0,
+   "max_end": 64.04933821115378,
+   "nan": false,
+   "inf": false,
+   "pitches_preserved": true,
+   "vel_ok": true,
+   "dur_positive": true
+  },
+  {
+   "label": "single note",
+   "warnings": [],
+   "inversions": 0,
+   "stacked_at_zero": 0,
+   "max_start": 0.00125809545354009,
+   "min_start": 0.00125809545354009,
+   "max_end": 0.8530239432095759,
+   "nan": false,
+   "inf": false,
+   "pitches_preserved": true,
+   "vel_ok": true,
+   "dur_positive": true
+  },
+  {
+   "label": "200 same key",
+   "warnings": [
+    "feel: velocity=0.125 is too large for this music \u2014 it was clamped on 8 of 200 notes to keep the note order, the piece length and the MIDI range intact"
+   ],
+   "inversions": 0,
+   "stacked_at_zero": 0,
+   "max_start": 4.051087867805527,
+   "min_start": 3.956044848834011,
+   "max_end": 4.520723917653831,
+   "nan": false,
+   "inf": false,
+   "pitches_preserved": true,
+   "vel_ok": true,
+   "dur_positive": true
+  }
+ ]
+}

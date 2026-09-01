@@ -1,0 +1,38 @@
+# examples/nocturne.fil — a short, slow piece in F# minor.
+#
+# The point of this one: harmony, melody and expression are three lanes of the
+# same stave, aligned column-wise, so you can read the shape of the phrase
+# without decoding any durations.
+#
+#   filigree render examples/nocturne.fil -o nocturne.mid
+
+@title "Nocturne for a small room"
+@tempo 58
+@key F# minor
+@grid 8ms
+@seed 11
+
+voicing warm  { range: C3..C5, mode: smooth, size: 4, spread: 1.05 }
+
+gesture sigh  = bend(0 -> -0.45st -> 0, shape: ease)
+gesture bloom = press(0.15 -> 0.8, shape: exp) | timbre(0.35 -> 0.62)
+
+
+stave lead {
+  feel loose
+  gesture bloom
+  harm!voicing=warm | i9        | VI^7      | iv11      | V7alt     |
+  notes             | 0 . 2 3   | 4 - - 2   | ~5 4 . 2  | 1 - - -   |
+  # `_` is the lane's REST value (bend 0 st), so a drawn floor is in tune;
+  # `v` is the explicit all-the-way-down — bar 4 dips a real minor third.
+  bend!range=3st    | ______56  | 66______  |           | ___vv__>3 |
+  press             | _/^^^^\_  | ____--^^  | __/^^^^^  | ^^^^\___  |
+  timbre            | --^^^^--  |           | ^^^^vvvv  | vvv^^^^^  |
+}
+
+stave pad {
+  channelgroup 1
+  harm!voicing=warm | i9 | VI^7 | iv11 | V7alt |
+  press!time=note   | /^^^^^\_ | /^^^^^\_ | /^^^^^\_ | /^^^^^\_ |
+  timbre            | 3333 | 4444 | 5555 | 6666 |
+}
