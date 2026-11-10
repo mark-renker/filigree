@@ -746,16 +746,24 @@ def apply_feel(notes: list[Note], spec: FeelSpec, tempo: float, seed: int,
     and the AR(1) recursions run over a deterministic ordering, so the same seed
     gives byte-identical output across interpreter invocations.
 
-    ``on_warning`` (optional) receives each parameter warning as a string; every
-    warning is also raised through :mod:`warnings` as a :class:`FeelWarning`.
+    ``on_warning`` (optional) receives each parameter warning as a string.
+    Without it, warnings are raised through :mod:`warnings` as
+    :class:`FeelWarning`; with it, they go to the callback only, so a caller
+    that owns a diagnostics channel (the resolver) does not also leak them to
+    stderr.
     """
     if not notes:
         return
+
+    def _emit(msg: str) -> None:
+        if on_warning is not None:
+            on_warning(msg)
+        else:
+            warnings.warn(msg, FeelWarning, stacklevel=3)
+
     p, msgs = normalise(spec)
     for m in msgs:
-        if on_warning is not None:
-            on_warning(m)
-        warnings.warn(m, FeelWarning, stacklevel=2)
+        _emit(m)
     if not p.active:
         return                              # bit-exact no-op
 
@@ -914,7 +922,12 @@ def apply_feel(notes: list[Note], spec: FeelSpec, tempo: float, seed: int,
                 shift = dev + chord_ms[i]
                 s = t + shift * ms_to_beats
                 if s < lo or s > hi:
-                    _note_clip("timing" if abs(dev) >= abs(chord_ms[i]) else "onset")
+                    # A note at the very start pushed early runs into beat 0,
+                    # not into the parameter window; that clamp says nothing
+                    # about the value being too large, so it is not counted.
+                    at_piece_start = s < 0.0 and s >= t - limit_beats
+                    if not at_piece_start:
+                        _note_clip("timing" if abs(dev) >= abs(chord_ms[i]) else "onset")
                     s = min(hi, max(lo, s))
                 new_start[i] = s
                 latest = max(latest, s)
@@ -997,6 +1010,4 @@ def apply_feel(notes: list[Note], spec: FeelSpec, tempo: float, seed: int,
         msg = (f"feel: {param}={value:g} is too large for this music — it was "
                f"clamped on {count} of {len(notes)} notes "
                f"{_why.get(param, 'to keep the score valid')}")
-        if on_warning is not None:
-            on_warning(msg)
-        warnings.warn(msg, FeelWarning, stacklevel=2)
+        _emit(msg)

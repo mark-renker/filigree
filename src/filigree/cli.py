@@ -26,15 +26,14 @@ TEMPLATE = """# {name} — Filigree
 @key C minor
 @seed 7
 
-gesture cry  = bend(0 -> -0.6st @ 35% -> 0, shape: ease)
-gesture wide = bend(wiggle(5.4hz, 0.28st) @ 35%..100%)
+gesture cry = bend(0 -> -0.6st @ 35% -> 0, shape: ease)
 
 stave lead {{
-  harm   | i9      | VI^7    | iv11    | V7alt   |
-  notes  | 0 . 2 3 | 4 - - 2 | 0 3 . 5 | 7 - 6 - |
-  bend   | ___/^^^ | ^^\\____ |         | __/\\_>3 |
-  press  | /^^^\\__ | -----^^ | __/^^\\_ | ^^^^\\__ |
-  timbre | ---^^^- |         |         |         |
+  harm              | i9       | VI^7     | iv11     | V7alt     |
+  notes!gesture=cry | 0 . 2 3  | 4 - - 2  | 0 3 . 5  | 7 - 6 -   |
+  bend              | ___/^^^^ | ^^\\_____ |          | __/\\___>3 |
+  press             | /^^^\\___ | -----^^^ | __/^^^\\_ | ^^^^\\___  |
+  timbre            | ---^^^-- |          |          |           |
 }}
 """
 
@@ -54,20 +53,9 @@ def _read(path: str) -> str:
 
 
 def _load(path: str, lenient: bool = False):
-    from .parse import parse
-    from .resolve import resolve
-
-    import inspect
-
-    # LEAD RULING (round 3): leniency has to start at the parser -- a typo'd chord
-    # symbol or an unknown glyph fails while parsing, long before the resolver runs.
-    try:
-        doc = parse(_read(path), path, lenient=lenient)
-    except TypeError:                     # older parser without the flag
-        doc = parse(_read(path), path)
-    if "lenient" in inspect.signature(resolve).parameters:
-        return resolve(doc, lenient=lenient)
-    return resolve(doc)
+    # Leniency starts at the parser: a typo'd chord symbol or an unknown glyph
+    # fails while parsing, long before the resolver runs (lead ruling, round 3).
+    return compile_source(_read(path), path, lenient=lenient)
 
 
 def _report(score) -> None:
