@@ -823,3 +823,47 @@ def test_cli_explain_runs_on_every_example():
     from filigree import cli
     for name in EXAMPLE_FILES:
         assert cli.main(["explain", os.path.join(EXAMPLES, name)]) == 0
+
+
+# --------------------------------------------------------------------------- #
+# diagnostics plumbing: every stage reports through score.warnings
+# --------------------------------------------------------------------------- #
+
+def test_feel_warnings_land_in_score_warnings_not_stderr():
+    import warnings as _w
+    src = ("@tempo 120\n@key C major\nfeel wild { timing: 900ms }\n"
+           "stave a {\n  feel wild\n"
+           "  notes | 0 2 4 5 | 7 5 4 2 | 0 2 4 5 | 7 5 4 2 |\n}\n")
+    with _w.catch_warnings(record=True) as caught:
+        _w.simplefilter("always")
+        score = compile_src(src, "wild.fil")
+    feel_warns = [w for w in score.warnings if "feel:" in w]
+    assert feel_warns, score.warnings
+    # named like every other diagnostic: file, line of the stave, 'warning:'
+    assert all(w.startswith("wild.fil:") and ": warning: " in w for w in feel_warns)
+    assert all(":0:0:" not in w for w in feel_warns), feel_warns
+    # ...and not duplicated onto the Python warnings channel
+    assert not [w for w in caught if "feel" in str(w.message)]
+
+
+def test_mpe_warnings_name_the_source_file(tmp_path):
+    path = os.path.join(EXAMPLES, "reference.fil")
+    score = filigree.compile_source(open(path).read(), path)
+    filigree.write_midi(score, str(tmp_path / "ref.mid"))
+    mpe = [w for w in score.warnings if "MPE:" in w]
+    assert mpe, "reference.fil is expected to trip the expression-rate advisory"
+    assert all(w.startswith(path + ":") for w in mpe), mpe
+    assert not any(w.startswith("<input>") for w in score.warnings)
+
+
+def test_cli_new_template_compiles_without_warnings(tmp_path):
+    from filigree import cli
+    path = str(tmp_path / "starter.fil")
+    assert cli.main(["new", path]) == 0
+    score = filigree.compile_source(open(path).read(), path)
+    assert score.notes
+    assert score.warnings == [], score.warnings
+    # the template must not define things it does not use
+    src = open(path).read()
+    for m in re.finditer(r"^gesture\s+(\w+)", src, re.M):
+        assert src.count(m.group(1)) > 1, f"gesture {m.group(1)!r} is defined but unused"

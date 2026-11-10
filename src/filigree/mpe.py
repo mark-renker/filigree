@@ -296,7 +296,7 @@ def _warn_once(score: Score, message: str) -> None:
     ``write_midi``); the warning list must not grow each time.
     """
     tmp: list[str] = []
-    errors.warn(tmp, message)
+    errors.warn(tmp, message, path=score.path, kind="mpe")
     for text in tmp:
         if text not in score.warnings:
             score.warnings.append(text)

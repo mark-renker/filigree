@@ -220,6 +220,7 @@ class _Resolver:
             grid_ms=float(d.get("grid", 10.0)),
             seed=int(d.get("seed", 0)),
             title=str(d.get("title", "") or ""),
+            path=doc.path,
         )
         self.tonic, self.mode = self.score.key
         self.mode = theory.normalise_mode(self.mode)
@@ -352,7 +353,11 @@ class _Resolver:
         # ---- feel --------------------------------------------------------
         fspec = self._feel_spec(st)
         if fspec is not None:
-            feel_mod.apply_feel(notes, fspec, self.score.tempo, self.score.seed)
+            # Feel warnings go through the resolver's diagnostics like every
+            # other warning, so the CLI, `filigree json` and the playground all
+            # see them, and nothing leaks to stderr via the warnings module.
+            feel_mod.apply_feel(notes, fspec, self.score.tempo, self.score.seed,
+                                on_warning=lambda m: self.warn(m, st.pos, kind="feel"))
 
         # ---- chord events ------------------------------------------------
         for sg in segs:

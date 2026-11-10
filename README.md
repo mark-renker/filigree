@@ -206,8 +206,8 @@ pip install -e ".[dev]"
 python -m pytest
 ```
 
-The suite is **854 tests**, and you should see something like
-`853 passed, 1 skipped`. Nothing should fail. Two of the tests are conditional on
+The suite is **859 tests**, and you should see something like
+`858 passed, 1 skipped`. Nothing should fail. Two of the tests are conditional on
 your environment, so exactly which one skips depends on your setup: one exercises
 the *missing*-`python-rtmidi` path and therefore skips once you install the
 realtime extra, and one needs the MAESTRO reference corpus, which is not
@@ -428,13 +428,9 @@ Written down so you do not discover them the hard way:
 - `[: :8]` repeat blocks do not expand bars reliably.
 - Note-lane anchors are `@root`, `@guide`, `@high`, `@low` only.
 - `>` harmonic targets are valid on `bend` lanes only.
-- `filigree new` writes a starter file whose curve lanes have more anchors than
-  slots, so it compiles with resampling warnings. They are harmless, but the
-  template is not the clean example it ought to be — `examples/front_page.fil`
-  is.
-- Four examples emit render-stage advisories (MPE expression-rate thinning, and a
-  `feel` timing clamp in `pulse.fil`). All eight examples compile with zero
-  *compile*-stage warnings; these come later, from the MPE renderer, and are
+- Three examples (`blue_iron`, `gesture_algebra`, `reference`) emit render-stage
+  advisories about MPE expression-rate thinning. All eight examples compile with
+  zero *compile*-stage warnings; these come later, from the MPE renderer, and are
   informational.
 - Two `feel` statistics still miss their target intervals and are disclosed in
   `NOTES_P5.md` rather than quietly dropped: the rubato is smoother than a
@@ -474,7 +470,7 @@ filigree explain examples/gesture_algebra.fil # gestures composed with + - * >> 
 | `examples/` | 8 example pieces |
 | `docs/SPEC.md` | the language, normatively |
 | `docs/ARCH.md` | module boundaries and the frozen contracts between them |
-| `tests/` | 854 tests |
+| `tests/` | 859 tests |
 | `tools/` | the MPE audit, the SMF parser, the performance statistics, the plotters |
 | `refs/` | the benchmark corpus, critic verdicts, MPE conformance audit, provenance |
 | `research/` | the landscape survey and the MPE technical notes this was designed from |

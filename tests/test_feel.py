@@ -909,3 +909,24 @@ def test_residual_estimator_finds_nothing_in_a_clean_grid():
     res, _idx, _t = residuals(ns, 120.0)
     assert res
     assert max(abs(r) for r in res) < 1e-6
+
+
+def test_clamp_at_piece_start_is_not_a_parameter_warning():
+    """A ``flat`` push of a few ms moves the beat-0 notes before the piece
+    starts; they are clamped to 0, but that is the piece boundary, not the
+    parameter, so no 'too large' warning may be raised for it."""
+    ns = [Note(start=b * 1.0, dur=0.9, pitch=60 + 12 * v, velocity=90,
+               stave="ch", voice=f"v{v}", id=b * 3 + v)
+          for b in range(4) for v in range(3)]            # 3 voices x 4 beats
+    msgs = humanise(ns, FeelSpec(timing_ms=-6.0, timing_dist="flat", seed=1),
+                    132.0, seed=5)
+    assert not [m for m in msgs if "timing" in m], msgs
+    assert all(n.start >= 0.0 for n in ns)
+    assert min(n.start for n in ns) == 0.0               # still clamped
+
+
+def test_genuinely_oversized_flat_timing_still_warns():
+    ns = melody_line(bars=2)
+    msgs = humanise(ns, FeelSpec(timing_ms=-900.0, timing_dist="flat", seed=1),
+                    120.0, seed=1)
+    assert any("timing" in m for m in msgs), msgs

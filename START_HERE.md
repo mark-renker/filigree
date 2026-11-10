@@ -98,7 +98,7 @@ of exit 2, so a half-typed file still plays. Structural mistakes stay hard error
 | `examples/` | 8 example pieces |
 | `src/filigree/` | the compiler: `lex → parse → theory/voicing → gesture → feel → resolve → mpe/realtime` |
 | `web/` | the playground (no build step, no dependencies, plain JS) |
-| `tests/` | 854 tests |
+| `tests/` | 859 tests |
 | `status/gauntlet-status.html` | the build record — every round, every verdict, with reasons |
 
 Known limits, so you do not discover them the hard way: a lane must be one line
@@ -111,7 +111,7 @@ anchors are `@root`/`@guide`/`@high`/`@low` only, and `>` targets are valid on
 ```bash
 source .venv/bin/activate
 pip install -e ".[dev]"
-python -m pytest          # 853 passed, 1 skipped
+python -m pytest          # 858 passed, 1 skipped
 ```
 
 Worth knowing what they cover, because it is not just unit tests: MPE output is

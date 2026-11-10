@@ -181,6 +181,7 @@ class Score:
     grid_ms: float = 10.0
     seed: int = 0
     title: str = ""
+    path: str = "<input>"                   # source file, for diagnostics
     staves: list[StaveIR] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
 
